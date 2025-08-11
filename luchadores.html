@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGB - Kombat Games Burgos | The Beginning</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&family=Anton:wght@400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-bottom: 2px solid #333;
+            transition: all 0.3s ease;
+            height: 80px;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 100%;
+        }
+        
+        .logo-section {
+            text-align: center;
+        }
+        
+        .logo-main {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            margin-bottom: -8px;
+        }
+        
+        .logo-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #ccc;
+        }
+        
+        .logo-tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #888;
+            margin-top: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+        }
+        
+        .nav-menu a:hover {
+            border: 1px solid #fff;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 150px;
+            padding-bottom: 50px;
+        }
+        
+        /* Cage Effect Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background-image: 
+                linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%);
+            background-size: 80px 80px;
+            animation: cageMove 25s linear infinite;
+            transform: translate(-10%, -10%);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background-image: 
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            background-size: 40px 40px;
+            animation: cageMoveDiagonal 20s linear infinite reverse;
+            transform: translate(-10%, -10%);
+        }
+        
+        @keyframes cageMove {
+            0% { transform: translate(-10%, -10%); }
+            100% { transform: translate(-10px, -10px); }
+        }
+        
+        @keyframes cageMoveDiagonal {
+            0% { transform: translate(-10%, -10%) rotate(0deg); }
+            100% { transform: translate(10px, 10px) rotate(2deg); }
+        }
+        
+        .hero-content {
+            z-index: 10;
+            max-width: 900px;
+            padding: 0 20px;
+            margin-top: 0;
+        }
+        
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 30px rgba(255,255,255,0.5),
+                0 0 60px rgba(255,255,255,0.3),
+                2px 2px 0px rgba(0,0,0,0.8);
+            animation: pulse 3s ease-in-out infinite alternate;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        
+        @keyframes pulse {
+            0% { 
+                text-shadow: 
+                    0 0 30px rgba(255,255,255,0.5),
+                    0 0 60px rgba(255,255,255,0.3),
+                    2px 2px 0px rgba(0,0,0,0.8);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 50px rgba(255,255,255,0.8), 
+                    0 0 80px rgba(255,255,255,0.5),
+                    2px 2px 0px rgba(0,0,0,0.8);
+            }
+        }
+        
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #ddd;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+        
+        .event-info {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 30px;
+            margin: 40px 0;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            letter-spacing: 3px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-info::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+            z-index: -1;
+            animation: borderGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        .cta-button {
+            background: #fff;
+            color: #000;
+            padding: 20px 50px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+            border: 2px solid #fff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(255,255,255,0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            background: #111;
+            padding: 100px 0;
+            text-align: center;
+            border-top: 3px solid #333;
+            border-bottom: 3px solid #333;
+        }
+        
+        .countdown-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .countdown-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .countdown-item:hover::before {
+            left: 100%;
+        }
+        
+        .countdown-number {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            color: #fff;
+            display: block;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #ccc;
+            text-transform: uppercase;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: #000;
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .about-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        
+        .about-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background: #111;
+            padding: 100px 0;
+            text-align: center;
+            border-top: 3px solid #333;
+        }
+
+        .sponsors-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .sponsor-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .sponsor-logo {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%) brightness(200%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover .sponsor-logo {
+            opacity: 1;
+            filter: grayscale(0) brightness(100%);
+        }
+
+        .sponsors-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #ddd;
+            margin-top: 20px;
+        }
+        
+        /* Social Section */
+        .social-section {
+            background: #111;
+            padding: 100px 0;
+            text-align: center;
+            border-top: 3px solid #333;
+        }
+        
+        .social-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            transform: translateX(-100%) translateY(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .social-icon:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        
+        .social-icon:hover::before {
+            transform: translateX(100%) translateY(100%);
+        }
+        
+        .social-info {
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: #fff;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid #333;
+        }
+        
+        .footer-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                height: 70px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+                padding: 5px 20px;
+            }
+            
+            .logo-main {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            
+            .logo-sub {
+                font-size: 0.6rem;
+            }
+            
+            .logo-tagline {
+                font-size: 0.5rem;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .nav-menu a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            .hero-content {
+                margin-top: -30px;
+            }
+            
+            .countdown {
+                gap: 20px;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 20px 15px;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .social-icons {
+                gap: 20px;
+            }
+            
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-section,
+            .countdown-section,
+            .social-section,
+            .sponsors-section {
+                padding: 80px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                height: 60px;
+            }
+            
+            .logo-main {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .hero {
+                padding-top: 90px;
+            }
+            
+            .event-info {
+                padding: 20px;
+                margin: 30px 0;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animations */
+        .fadeInUp {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content > * {
+            animation-delay: 0.3s;
+        }
+        
+        .hero-title {
+            animation-delay: 0s;
+        }
+        
+        .hero-subtitle {
+            animation-delay: 0.2s;
+        }
+        
+        .event-info {
+            animation-delay: 0.4s;
+        }
+        
+        .cta-button {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-main">KGB</div>
+                <div class="logo-sub">KOMBAT GAMES BURGOS</div>
+                <div class="logo-tagline">The Beginning</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="luchadores.html">Luchadores</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title fadeInUp">KOMBAT GAMES BURGOS</h1>
+            <p class="hero-subtitle fadeInUp">Las leyendas se forjan aquí... y tú tendrás un asiento en primera fila.</p>
+            <div class="event-info fadeInUp">
+                20 DE SEPTIEMBRE | 17:00H | POLIDEPORTIVO VILLAGONZALO
+            </div>
+            <a href="luchadores.html" class="cta-button fadeInUp">VER LUCHADORES</a>
+        </div>
+    </section>
+
+    <section class="countdown-section">
+        <h2 class="countdown-title">CUENTA REGRESIVA</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">--</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">--</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">--</span>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">--</span>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2 class="about-title">EL NACIMIENTO DE UNA LEYENDA</h2>
+            <p class="about-text">
+                KGB es el primer evento de MMA de Burgos. Ven a presenciar el nacimiento de una nueva era de luchadores. 
+                Combates amateur repletos de acción y pasión por las artes marciales mixtas. 
+                Una noche donde el honor se decide en el octágono y donde cada golpe cuenta una historia de dedicación, 
+                sacrificio y gloria. Este es solo el comienzo de algo grandioso.
+            </p>
+        </div>
+    </section>
+
+    <section class="social-section">
+        <h2 class="social-title">ÚNETE A LA COMUNIDAD DE COMBATIENTES</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-icon">
+                📷
+            </a>
+            <a href="mailto:kombatgamesburgos@gmail.com" class="social-icon">
+                ✉️
+            </a>
+        </div>
+        <div class="social-info">
+            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link">
+                @kombatgamesburgos2025
+            </a>
+            <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
+                kombatgamesburgos@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <section class="sponsors-section">
+        <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <img src="images\logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_farandula-removebg-preview.png" alt="Farándula" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
+            </div>
+        </div>
+        <p class="sponsors-text">Gracias por hacer posible este evento</p>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2025-09-20T17:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0,0,0,0.98)';
+            } else {
+                header.style.background = 'rgba(0,0,0,0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.countdown-section, .about-section, .sponsors-section, .social-section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
