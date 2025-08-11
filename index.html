@@ -101,7 +101,7 @@
             background: rgba(255,255,255,0.1);
         }
         
-        /* Hero Section - Solucionado */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
@@ -117,7 +117,7 @@
             padding-bottom: 50px;
         }
         
-        /* Cage Effect Background - Modificado para mayor contraste */
+        /* Cage Effect Background */
         .hero::before {
             content: '';
             position: absolute;
@@ -476,6 +476,71 @@
         .social-link:hover {
             color: #fff;
         }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background: #111;
+            padding: 100px 0;
+            text-align: center;
+            border-top: 3px solid #333;
+        }
+
+        .sponsors-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .sponsor-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .sponsor-logo {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%) brightness(200%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover .sponsor-logo {
+            opacity: 1;
+            filter: grayscale(0) brightness(100%);
+        }
+
+        .sponsors-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #ddd;
+            margin-top: 20px;
+        }
         
         /* Footer */
         .footer {
@@ -556,10 +621,15 @@
                 height: 60px;
                 font-size: 1.5rem;
             }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             
             .about-section,
             .countdown-section,
-            .social-section {
+            .social-section,
+            .sponsors-section {
                 padding: 80px 0;
             }
         }
@@ -682,7 +752,7 @@
             </p>
         </div>
     </section>
-
+    
     <section class="social-section">
         <h2 class="social-title">ÚNETE A LA COMUNIDAD DE COMBATIENTES</h2>
         <div class="social-icons">
@@ -701,6 +771,31 @@
                 kombatgamesburgos@gmail.com
             </a>
         </div>
+    </section>
+
+    <section class="sponsors-section">
+        <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <img src="images\logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_farandula-removebg-preview.png" alt="Farándula" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
+            </div>
+        </div>
+        <p class="sponsors-text">Gracias por hacer posible este evento</p>
     </section>
 
     <footer class="footer">
@@ -770,7 +865,7 @@
 
         // Observe sections for animations
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.countdown-section, .about-section, .social-section');
+            const sections = document.querySelectorAll('.countdown-section, .about-section, .sponsors-section, .social-section');
             sections.forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(30px)';

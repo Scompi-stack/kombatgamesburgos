@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KGB - Kombat Games Burgos | The Beginning</title>
+    <title>Luchadores - KGB | Kombat Games Burgos</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&family=Anton:wght@400&display=swap');
         
@@ -25,7 +25,7 @@
             line-height: 1.4;
         }
         
-        /* Header */
+        /* Header - Igual que el original */
         .header {
             position: fixed;
             top: 0;
@@ -100,25 +100,28 @@
             border: 1px solid #fff;
             background: rgba(255,255,255,0.1);
         }
+
+        .nav-menu a.active {
+            border: 1px solid #fff;
+            background: rgba(255,255,255,0.1);
+        }
         
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
-            background-size: cover;
-            background-position: center;
+        /* Hero Section para Luchadores */
+        .fighters-hero {
+            min-height: 60vh;
+            background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 150px;
+            padding-top: 120px;
             padding-bottom: 50px;
         }
         
-        /* Cage Effect Background */
-        .hero::before {
+        /* Cage Effect Background - Igual que el original */
+        .fighters-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -126,26 +129,10 @@
             width: 120%;
             height: 120%;
             background-image: 
-                linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%);
-            background-size: 80px 80px;
-            animation: cageMove 25s linear infinite;
-            transform: translate(-10%, -10%);
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 120%;
-            height: 120%;
-            background-image: 
-                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
-                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
-                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            background-size: 40px 40px;
-            animation: cageMoveDiagonal 20s linear infinite reverse;
+                linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%);
+            background-size: 60px 60px;
+            animation: cageMove 20s linear infinite;
             transform: translate(-10%, -10%);
         }
         
@@ -154,21 +141,15 @@
             100% { transform: translate(-10px, -10px); }
         }
         
-        @keyframes cageMoveDiagonal {
-            0% { transform: translate(-10%, -10%) rotate(0deg); }
-            100% { transform: translate(10px, 10px) rotate(2deg); }
-        }
-        
-        .hero-content {
+        .fighters-hero-content {
             z-index: 10;
-            max-width: 900px;
+            max-width: 800px;
             padding: 0 20px;
-            margin-top: 0;
         }
         
-        .hero-title {
+        .fighters-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 400;
             letter-spacing: 4px;
             margin-bottom: 20px;
@@ -177,8 +158,6 @@
                 0 0 60px rgba(255,255,255,0.3),
                 2px 2px 0px rgba(0,0,0,0.8);
             animation: pulse 3s ease-in-out infinite alternate;
-            word-wrap: break-word;
-            text-align: center;
         }
         
         @keyframes pulse {
@@ -196,125 +175,59 @@
             }
         }
         
-        .hero-subtitle {
+        .fighters-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 40px;
             color: #ddd;
             font-style: italic;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
         
-        .event-info {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 30px;
-            margin: 40px 0;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            letter-spacing: 3px;
-            border-radius: 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .event-info::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
-            z-index: -1;
-            animation: borderGlow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes borderGlow {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.8; }
-        }
-        
-        .cta-button {
-            background: #fff;
-            color: #000;
-            padding: 20px 50px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
+        /* Fighters Grid */
+        .fighters-section {
             background: #000;
-            color: #fff;
-            border: 2px solid #fff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(255,255,255,0.5);
+            padding: 100px 0;
+            position: relative;
         }
         
-        .cta-button::before {
+        .fighters-section::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
-            transition: left 0.5s;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M 15 0 L 0 0 0 15" fill="none" stroke="%23222" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
         
-        .cta-button:hover::before {
-            left: 100%;
+        .fighters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
         }
         
-        /* Countdown Section */
-        .countdown-section {
-            background: #111;
-            padding: 100px 0;
-            text-align: center;
-            border-top: 3px solid #333;
-            border-bottom: 3px solid #333;
-        }
-        
-        .countdown-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-            color: #fff;
-        }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
+        .fighters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            flex-wrap: wrap;
+            margin-bottom: 60px;
         }
         
-        .countdown-item {
+        .fighter-card {
             background: rgba(255,255,255,0.05);
             border: 2px solid rgba(255,255,255,0.1);
-            padding: 30px 20px;
-            min-width: 120px;
-            transition: all 0.3s ease;
+            padding: 0;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         
-        .countdown-item::before {
+        .fighter-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -323,76 +236,186 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             transition: left 0.5s;
+            z-index: 1;
         }
         
-        .countdown-item:hover {
+        .fighter-card:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         
-        .countdown-item:hover::before {
+        .fighter-card:hover::before {
             left: 100%;
         }
         
-        .countdown-number {
-            font-family: 'Anton', sans-serif;
-            font-size: 3rem;
-            color: #fff;
-            display: block;
-            line-height: 1;
-        }
-        
-        .countdown-label {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: #ccc;
-            text-transform: uppercase;
-        }
-        
-        /* About Section */
-        .about-section {
-            background: #000;
-            padding: 120px 0;
+        .fighter-image {
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
             position: relative;
+            overflow: hidden;
         }
         
-        .about-section::before {
+        .fighter-image::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: imageGlow 4s ease-in-out infinite alternate;
         }
         
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
+        @keyframes imageGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        .fighter-info {
+            padding: 30px;
             position: relative;
-            z-index: 10;
+            z-index: 2;
         }
         
-        .about-title {
+        .fighter-name {
             font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .fighter-nickname {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .fighter-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .fighter-stat {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        
+        .fighter-discipline {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Main Event Section */
+        .main-event-section {
+            background: #111;
+            padding: 100px 0;
+            border-top: 3px solid #333;
+            border-bottom: 3px solid #333;
+        }
+        
+        .main-event-title {
+            text-align: center;
+            font-family: 'Anton', sans-serif;
             font-size: 3.5rem;
             letter-spacing: 4px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
         
-        .about-text {
+        .main-event-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            border: 3px solid rgba(255,255,255,0.3);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-event-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .vs-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 6px;
+            color: #fff;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        
+        .main-event-fighter {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            color: #fff;
+            margin: 15px 0;
+        }
+        
+        .main-event-info {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 300;
-            line-height: 1.8;
-            color: #ddd;
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-top: 30px;
             letter-spacing: 1px;
         }
 
@@ -461,88 +484,35 @@
             margin-top: 20px;
         }
         
-        /* Social Section */
-        .social-section {
-            background: #111;
-            padding: 100px 0;
-            text-align: center;
-            border-top: 3px solid #333;
-        }
-        
-        .social-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-            color: #fff;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .social-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.3);
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #fff;
+            color: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #000;
             color: #fff;
-            font-size: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
-            transform: translateX(-100%) translateY(-100%);
-            transition: transform 0.5s;
-        }
-        
-        .social-icon:hover {
-            background: #fff;
-            color: #000;
+            border: 2px solid #fff;
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255,255,255,0.5);
         }
         
-        .social-icon:hover::before {
-            transform: translateX(100%) translateY(100%);
-        }
-        
-        .social-info {
-            margin-top: 30px;
-        }
-        
-        .social-link {
-            display: block;
-            color: #ccc;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            margin: 10px 0;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-link:hover {
-            color: #fff;
-        }
-        
-        /* Footer */
+        /* Footer - Igual que el original */
         .footer {
             background: #000;
             padding: 40px 0;
@@ -563,99 +533,46 @@
                 height: 70px;
             }
             
-            .header-content {
-                flex-direction: column;
-                gap: 10px;
-                padding: 5px 20px;
-            }
-            
-            .logo-main {
-                font-size: 2rem;
-                letter-spacing: 3px;
-            }
-            
-            .logo-sub {
-                font-size: 0.6rem;
-            }
-            
-            .logo-tagline {
-                font-size: 0.5rem;
-            }
-            
-            .nav-menu {
-                gap: 20px;
-            }
-            
-            .nav-menu a {
-                font-size: 1rem;
-                padding: 5px 10px;
-            }
-            
-            .hero {
+            .fighters-hero {
                 padding-top: 100px;
             }
             
-            .hero-content {
-                margin-top: -30px;
+            .fighters-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            .countdown {
-                gap: 20px;
+            .fighter-card {
+                margin: 0 10px;
             }
             
-            .countdown-item {
-                min-width: 100px;
-                padding: 20px 15px;
+            .fighter-image {
+                height: 250px;
+                font-size: 3rem;
             }
             
-            .countdown-number {
-                font-size: 2.5rem;
+            .vs-text {
+                font-size: 3rem;
             }
             
-            .social-icons {
-                gap: 20px;
+            .main-event-fighter {
+                font-size: 2rem;
             }
             
-            .social-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .sponsors-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about-section,
-            .countdown-section,
-            .social-section,
-            .sponsors-section {
-                padding: 80px 0;
+            .main-event-card {
+                margin: 0 20px;
+                padding: 30px 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .header {
-                height: 60px;
+            .fighters-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .logo-main {
-                font-size: 1.8rem;
-                letter-spacing: 2px;
-            }
-            
-            .hero {
-                padding-top: 90px;
-            }
-            
-            .event-info {
-                padding: 20px;
-                margin: 30px 0;
-            }
-            
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+            .fighter-stats {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -673,24 +590,12 @@
             }
         }
         
-        .hero-content > * {
+        .fighter-card {
+            animation-delay: 0.1s;
+        }
+        
+        .fighter-card:nth-child(even) {
             animation-delay: 0.3s;
-        }
-        
-        .hero-title {
-            animation-delay: 0s;
-        }
-        
-        .hero-subtitle {
-            animation-delay: 0.2s;
-        }
-        
-        .event-info {
-            animation-delay: 0.4s;
-        }
-        
-        .cta-button {
-            animation-delay: 0.6s;
         }
     </style>
 </head>
@@ -698,78 +603,203 @@
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo-main">KGB</div>
-                <div class="logo-sub">KOMBAT GAMES BURGOS</div>
-                <div class="logo-tagline">The Beginning</div>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-main">KGB</div>
+                    <div class="logo-sub">KOMBAT GAMES BURGOS</div>
+                    <div class="logo-tagline">The Beginning</div>
+                </a>
             </div>
             <nav class="nav-menu">
-                <a href="luchadores.html">Luchadores</a>
+                <a href="index.html">Inicio</a>
+                <a href="luchadores.html" class="active">Luchadores</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title fadeInUp">KOMBAT GAMES BURGOS</h1>
-            <p class="hero-subtitle fadeInUp">Las leyendas se forjan aquí... y tú tendrás un asiento en primera fila.</p>
-            <div class="event-info fadeInUp">
-                20 DE SEPTIEMBRE | 17:00H | POLIDEPORTIVO VILLAGONZALO
-            </div>
-            <a href="luchadores.html" class="cta-button fadeInUp">VER LUCHADORES</a>
+    <section class="fighters-hero">
+        <div class="fighters-hero-content">
+            <h1 class="fighters-title fadeInUp">GLADIADORES DEL OCTÁGONO</h1>
+            <p class="fighters-subtitle fadeInUp">Cada luchador tiene una historia... cada combate forjará una leyenda</p>
         </div>
     </section>
 
-    <section class="countdown-section">
-        <h2 class="countdown-title">CUENTA REGRESIVA</h2>
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">--</span>
-                <span class="countdown-label">Días</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">--</span>
-                <span class="countdown-label">Horas</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">--</span>
-                <span class="countdown-label">Minutos</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">--</span>
-                <span class="countdown-label">Segundos</span>
+    <section class="main-event-section">
+        <h2 class="main-event-title">COMBATE ESTELAR</h2>
+        <div class="main-event-card">
+            <div class="main-event-fighter">MIHAI DOGARU</div>
+            <div class="vs-text">VS</div>
+            <div class="main-event-fighter">AMIRAN LIPARTENIANI</div>
+            <div class="main-event-info">
+                COMBATE PRINCIPAL | 20 DE SEPTIEMBRE | 17:00H
             </div>
         </div>
     </section>
 
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <h2 class="about-title">EL NACIMIENTO DE UNA LEYENDA</h2>
-            <p class="about-text">
-                KGB es el primer evento de MMA de Burgos. Ven a presenciar el nacimiento de una nueva era de luchadores. 
-                Combates amateur repletos de acción y pasión por las artes marciales mixtas. 
-                Una noche donde el honor se decide en el octágono y donde cada golpe cuenta una historia de dedicación, 
-                sacrificio y gloria. Este es solo el comienzo de algo grandioso.
-            </p>
-        </div>
-    </section>
+    <section class="fighters-section">
+        <div class="fighters-container">
+            <div class="fighters-grid">
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">🥊</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Mihai Dogaru</h3>
+                        <p class="fighter-nickname">"El Martillo de Bucarest"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">27</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">75kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">3-1</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">2</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">Boxing • Muay Thai</span>
+                    </div>
+                </div>
 
-    <section class="social-section">
-        <h2 class="social-title">ÚNETE A LA COMUNIDAD DE COMBATIENTES</h2>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-icon">
-                📷
-            </a>
-            <a href="mailto:kombatgamesburgos@gmail.com" class="social-icon">
-                ✉️
-            </a>
-        </div>
-        <div class="social-info">
-            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link">
-                @kombatgamesburgos2025
-            </a>
-            <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
-                kombatgamesburgos@gmail.com
-            </a>
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">🏃‍♂️</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Amiran Liparteniani</h3>
+                        <p class="fighter-nickname">"El Torbellino de Tiflis"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">29</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">76kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">4-0</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">3</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">Wrestling • Sambo</span>
+                    </div>
+                </div>
+
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">⚔️</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Adrián Baranda</h3>
+                        <p class="fighter-nickname">"La Furia Burgalesa"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">25</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">72kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">2-1</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">1</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">Kickboxing • Jiu-Jitsu</span>
+                    </div>
+                </div>
+
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">🐺</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Ratza Ciprian</h3>
+                        <p class="fighter-nickname">"El Lobo de los Cárpatos"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">26</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">78kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">3-0</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">2</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">MMA • Wrestling</span>
+                    </div>
+                </div>
+
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">🔥</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Carlos Mendoza</h3>
+                        <p class="fighter-nickname">"El Phoenix"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">24</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">70kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">1-2</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">1</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">Karate • Boxing</span>
+                    </div>
+                </div>
+
+                <div class="fighter-card fadeInUp">
+                    <div class="fighter-image">⚡</div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Javier Santos</h3>
+                        <p class="fighter-nickname">"El Rayo"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">28</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">74kg</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">2-0</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">1</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">Muay Thai • BJJ</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -798,46 +828,13 @@
         <p class="sponsors-text">Gracias por hacer posible este evento</p>
     </section>
 
+    <button class="back-button" onclick="window.location.href='index.html'">🏠</button>
+
     <footer class="footer">
         <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const eventDate = new Date('2025-09-20T17:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }
-
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-
-        // Smooth scrolling
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
         // Header background on scroll
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
@@ -863,14 +860,43 @@
             });
         }, observerOptions);
 
-        // Observe sections for animations
+        // Observe fighter cards for staggered animations
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.countdown-section, .about-section, .sponsors-section, .social-section');
+            const cards = document.querySelectorAll('.fighter-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Animate sections
+            const sections = document.querySelectorAll('.main-event-section, .sponsors-section');
             sections.forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(30px)';
                 section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(section);
+            });
+        });
+
+        // Fighter card click effects
+        document.querySelectorAll('.fighter-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-10px)';
+                }, 200);
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
