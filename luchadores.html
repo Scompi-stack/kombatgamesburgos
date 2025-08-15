@@ -53,6 +53,11 @@
             text-align: center;
         }
         
+        .logo-img {
+            height: 120px;
+            width: auto;
+        }
+
         .logo-main {
             font-family: 'Anton', sans-serif;
             font-size: 2.2rem;
@@ -252,32 +257,25 @@
         
         .fighter-image {
             height: 300px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background-color: rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
             border-bottom: 2px solid rgba(255,255,255,0.1);
             position: relative;
             overflow: hidden;
         }
         
-        .fighter-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .fighter-image img {
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: imageGlow 4s ease-in-out infinite alternate;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.3s ease;
         }
         
-        @keyframes imageGlow {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
+        .fighter-card:hover .fighter-image img {
+            transform: scale(1.05);
         }
         
         .fighter-info {
@@ -465,14 +463,12 @@
         .sponsor-logo {
             max-width: 100%;
             height: auto;
-            filter: grayscale(100%) brightness(200%);
-            opacity: 0.7;
+            opacity: 0.8;
             transition: all 0.3s ease;
         }
 
         .sponsor-item:hover .sponsor-logo {
             opacity: 1;
-            filter: grayscale(0) brightness(100%);
         }
 
         .sponsors-text {
@@ -604,9 +600,7 @@
         <div class="header-content">
             <div class="logo-section">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <div class="logo-main">KGB</div>
-                    <div class="logo-sub">KOMBAT GAMES BURGOS</div>
-                    <div class="logo-tagline">The Beginning</div>
+                    <img src="images/logo_kgb.png" alt="KGB Logo" class="logo-img">
                 </a>
             </div>
             <nav class="nav-menu">
@@ -639,26 +633,57 @@
         <div class="fighters-container">
             <div class="fighters-grid">
                 <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">🥊</div>
+                    <div class="fighter-image">
+                        <img src="images\ratza.jpeg" alt="Ratza Ciprian">
+                    </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Mihai Dogaru</h3>
-                        <p class="fighter-nickname">"El Martillo de Bucarest"</p>
+                        <h3 class="fighter-name">Ratza Ciprian</h3>
+                        <p class="fighter-nickname">"La Leyenda"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
                                 <div class="stat-label">Edad</div>
-                                <div class="stat-value">27</div>
+                                <div class="stat-value">43</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Peso</div>
-                                <div class="stat-value">75kg</div>
+                                <div class="stat-value">Medio</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Record</div>
-                                <div class="stat-value">3-1</div>
+                                <div class="stat-value">6-9</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">2</div>
+                                <div class="stat-value">6</div>
+                            </div>
+                        </div>
+                        <span class="fighter-discipline">MMA • Brazilian Jiu-Jitsu </span>
+                    </div>
+                </div>
+				
+				<div class="fighter-card fadeInUp">
+                    <div class="fighter-image">
+                        <img src="images/mihai-dogaru.jpg" alt="Mihai Dogaru">
+                    </div>
+                    <div class="fighter-info">
+                        <h3 class="fighter-name">Mihai Dogaru</h3>
+                        <p class="fighter-nickname">"El Halcón"</p>
+                        <div class="fighter-stats">
+                            <div class="fighter-stat">
+                                <div class="stat-label">Edad</div>
+                                <div class="stat-value">-</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Peso</div>
+                                <div class="stat-value">Welter</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Record</div>
+                                <div class="stat-value">6-3</div>
+                            </div>
+                            <div class="fighter-stat">
+                                <div class="stat-label">Finalizaciones</div>
+                                <div class="stat-value">5</div>
                             </div>
                         </div>
                         <span class="fighter-discipline">Boxing • Muay Thai</span>
@@ -666,26 +691,28 @@
                 </div>
 
                 <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">🏃‍♂️</div>
+                    <div class="fighter-image">
+                        <img src="images\amiran.jpeg" alt="Amiran Liparteniani">
+                    </div>
                     <div class="fighter-info">
                         <h3 class="fighter-name">Amiran Liparteniani</h3>
                         <p class="fighter-nickname">"El Torbellino de Tiflis"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
                                 <div class="stat-label">Edad</div>
-                                <div class="stat-value">29</div>
+                                <div class="stat-value">-</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Peso</div>
-                                <div class="stat-value">76kg</div>
+                                <div class="stat-value">Pesado</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Record</div>
-                                <div class="stat-value">4-0</div>
+                                <div class="stat-value">6-3</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">3</div>
+                                <div class="stat-value">5</div>
                             </div>
                         </div>
                         <span class="fighter-discipline">Wrestling • Sambo</span>
@@ -693,18 +720,20 @@
                 </div>
 
                 <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">⚔️</div>
+                    <div class="fighter-image">
+                        <img src="images/adrian-baranda.jpg" alt="Adrián Baranda">
+                    </div>
                     <div class="fighter-info">
                         <h3 class="fighter-name">Adrián Baranda</h3>
-                        <p class="fighter-nickname">"La Furia Burgalesa"</p>
+                        <p class="fighter-nickname">"Notorius"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
                                 <div class="stat-label">Edad</div>
-                                <div class="stat-value">25</div>
+                                <div class="stat-value">22</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Peso</div>
-                                <div class="stat-value">72kg</div>
+                                <div class="stat-value">Ligero</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Record</div>
@@ -719,77 +748,26 @@
                     </div>
                 </div>
 
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">🐺</div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Ratza Ciprian</h3>
-                        <p class="fighter-nickname">"El Lobo de los Cárpatos"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">26</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">78kg</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">3-0</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">2</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">MMA • Wrestling</span>
-                    </div>
-                </div>
 
                 <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">🔥</div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Carlos Mendoza</h3>
-                        <p class="fighter-nickname">"El Phoenix"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">24</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">70kg</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">1-2</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">1</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">Karate • Boxing</span>
+                    <div class="fighter-image">
+                        <img src="images\diego_vaquero.jpeg" alt="Javier Santos">
                     </div>
-                </div>
-
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">⚡</div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Javier Santos</h3>
+                        <h3 class="fighter-name">Diego Vaquero</h3>
                         <p class="fighter-nickname">"El Rayo"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
                                 <div class="stat-label">Edad</div>
-                                <div class="stat-value">28</div>
+                                <div class="stat-value">-</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Peso</div>
-                                <div class="stat-value">74kg</div>
+                                <div class="stat-value">Pluma</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Record</div>
-                                <div class="stat-value">2-0</div>
+                                <div class="stat-value">1-0</div>
                             </div>
                             <div class="fighter-stat">
                                 <div class="stat-label">Finalizaciones</div>
@@ -807,13 +785,13 @@
         <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
         <div class="sponsors-grid">
             <div class="sponsor-item">
-                <img src="images\logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
+                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
             </div>
             <div class="sponsor-item">
                 <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_farandula-removebg-preview.png" alt="Farándula" class="sponsor-logo">
+                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo">
             </div>
             <div class="sponsor-item">
                 <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
@@ -823,6 +801,9 @@
             </div>
             <div class="sponsor-item">
                 <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
+            </div>
+			<div class="sponsor-item">
+                <img src="images\logo_aemma.png" alt="Diorse" class="sponsor-logo">
             </div>
         </div>
         <p class="sponsors-text">Gracias por hacer posible este evento</p>
