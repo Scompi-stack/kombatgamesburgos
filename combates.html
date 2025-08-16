@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luchadores - KGB | Kombat Games Burgos</title>
+    <title>Combates - KGB | Kombat Games Burgos</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&family=Anton:wght@400&display=swap');
         
@@ -25,7 +25,7 @@
             line-height: 1.4;
         }
         
-        /* Header - Igual que el original */
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -57,33 +57,6 @@
             height: 120px;
             width: auto;
         }
-
-        .logo-main {
-            font-family: 'Anton', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 400;
-            letter-spacing: 6px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255,255,255,0.3);
-            margin-bottom: -8px;
-        }
-        
-        .logo-sub {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: #ccc;
-        }
-        
-        .logo-tagline {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: #888;
-            margin-top: 2px;
-        }
         
         .nav-menu {
             display: flex;
@@ -111,8 +84,8 @@
             background: rgba(255,255,255,0.1);
         }
         
-        /* Hero Section para Luchadores */
-        .fighters-hero {
+        /* Hero Section */
+        .fights-hero {
             min-height: 60vh;
             background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
             display: flex;
@@ -125,8 +98,8 @@
             padding-bottom: 50px;
         }
         
-        /* Cage Effect Background - Igual que el original */
-        .fighters-hero::before {
+        /* Cage Effect Background */
+        .fights-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -146,13 +119,13 @@
             100% { transform: translate(-10px, -10px); }
         }
         
-        .fighters-hero-content {
+        .fights-hero-content {
             z-index: 10;
             max-width: 800px;
             padding: 0 20px;
         }
         
-        .fighters-title {
+        .fights-title {
             font-family: 'Anton', sans-serif;
             font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 400;
@@ -180,7 +153,7 @@
             }
         }
         
-        .fighters-subtitle {
+        .fights-subtitle {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(1rem, 2.5vw, 1.5rem);
             font-weight: 300;
@@ -189,14 +162,18 @@
             font-style: italic;
         }
         
-        /* Fighters Grid */
-        .fighters-section {
+        /* Coming Soon Section */
+        .coming-soon-section {
             background: #000;
-            padding: 100px 0;
+            padding: 120px 0;
             position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .fighters-section::before {
+        .coming-soon-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -207,32 +184,106 @@
             opacity: 0.3;
         }
         
-        .fighters-container {
-            max-width: 1200px;
+        .coming-soon-container {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
+            text-align: center;
             position: relative;
             z-index: 10;
         }
         
-        .fighters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+        .coming-soon-content {
+            background: rgba(255,255,255,0.05);
+            border: 3px solid rgba(255,255,255,0.2);
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
         }
         
-        .fighter-card {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            padding: 0;
+        .coming-soon-content::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        .coming-soon-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-bottom: 30px;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.6),
+                0 0 80px rgba(255,255,255,0.4);
+            animation: comingSoonPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes comingSoonPulse {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 
+                    0 0 40px rgba(255,255,255,0.6),
+                    0 0 80px rgba(255,255,255,0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                text-shadow: 
+                    0 0 60px rgba(255,255,255,0.9),
+                    0 0 120px rgba(255,255,255,0.6);
+            }
+        }
+        
+        .coming-soon-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+        
+        .coming-soon-description {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: #ccc;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .fights-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .fight-preview-card {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.15);
+            padding: 40px 30px;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
         
-        .fighter-card::before {
+        .fight-preview-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -240,110 +291,91 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-            z-index: 1;
+            transition: left 0.6s;
         }
         
-        .fighter-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-10px);
+        .fight-preview-card:hover {
+            background: rgba(255,255,255,0.12);
             border-color: rgba(255,255,255,0.3);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         
-        .fighter-card:hover::before {
+        .fight-preview-card:hover::before {
             left: 100%;
         }
         
-        .fighter-image {
-            height: 300px;
-            background-color: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .fighter-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 0.3s ease;
-        }
-        
-        .fighter-card:hover .fighter-image img {
-            transform: scale(1.05);
-        }
-        
-        .fighter-info {
-            padding: 30px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .fighter-name {
+        .fight-category {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
             color: #fff;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         
-        .fighter-nickname {
+        .fight-description {
             font-family: 'Oswald', sans-serif;
             font-size: 1.1rem;
             font-weight: 300;
-            font-style: italic;
-            color: #ccc;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            color: #bbb;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
         }
         
-        .fighter-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .fighter-stat {
-            background: rgba(255,255,255,0.05);
-            padding: 10px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .stat-label {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .stat-value {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            color: #fff;
-            letter-spacing: 1px;
-        }
-        
-        .fighter-discipline {
+        .notification-signup {
             background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .notification-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .notification-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 15px 30px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
             font-weight: 500;
             letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-link:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
         }
         
         /* Sponsors Section */
@@ -437,7 +469,7 @@
             transform: scale(1.1);
         }
         
-        /* Footer - Igual que el original */
+        /* Footer */
         .footer {
             background: #000;
             padding: 40px 0;
@@ -458,33 +490,63 @@
                 height: 70px;
             }
             
-            .fighters-hero {
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+                padding: 5px 20px;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .nav-menu a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+            
+            .fights-hero {
                 padding-top: 100px;
             }
             
-            .fighters-grid {
+            .coming-soon-content {
+                padding: 60px 30px;
+            }
+            
+            .fights-preview {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
             
-            .fighter-card {
-                margin: 0 10px;
+            .social-links {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .fighter-image {
-                height: 250px;
-                font-size: 3rem;
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 480px) {
-            .fighters-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .header {
+                height: 60px;
             }
             
-            .fighter-stats {
-                grid-template-columns: 1fr;
+            .fights-hero {
+                padding-top: 90px;
+            }
+            
+            .coming-soon-content {
+                padding: 40px 20px;
+            }
+            
+            .fight-preview-card {
+                padding: 30px 20px;
+            }
+            
+            .notification-signup {
+                padding: 30px 20px;
             }
         }
         
@@ -502,12 +564,16 @@
             }
         }
         
-        .fighter-card {
+        .fight-preview-card {
             animation-delay: 0.1s;
         }
         
-        .fighter-card:nth-child(even) {
+        .fight-preview-card:nth-child(2) {
             animation-delay: 0.3s;
+        }
+        
+        .fight-preview-card:nth-child(3) {
+            animation-delay: 0.5s;
         }
     </style>
 </head>
@@ -521,165 +587,65 @@
             </div>
             <nav class="nav-menu">
                 <a href="index.html">Inicio</a>
-                <a href="luchadores.html" class="active">Luchadores</a>
-                <a href="combates.html">Combates</a>
+                <a href="luchadores.html">Luchadores</a>
+                <a href="combates.html" class="active">Combates</a>
             </nav>
         </div>
     </header>
 
-    <section class="fighters-hero">
-        <div class="fighters-hero-content">
-            <h1 class="fighters-title fadeInUp">GLADIADORES DEL OCTÁGONO</h1>
-            <p class="fighters-subtitle fadeInUp">Cada luchador tiene una historia... cada combate forjará una leyenda</p>
+    <section class="fights-hero">
+        <div class="fights-hero-content">
+            <h1 class="fights-title fadeInUp">COMBATES ÉPICOS</h1>
+            <p class="fights-subtitle fadeInUp">Donde la estrategia y el entrenamiento se encuentran en el centro del octágono</p>
         </div>
     </section>
 
-    <section class="fighters-section">
-        <div class="fighters-container">
-            <div class="fighters-grid">
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">
-                        <img src="images\ratza.jpeg" alt="Ratza Ciprian">
-                    </div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Ratza Ciprian</h3>
-                        <p class="fighter-nickname">"La Leyenda"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">43</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">Medio</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">6-9</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">6</div>
-                            </div>
+    <section class="coming-soon-section">
+        <div class="coming-soon-container">
+            <div class="coming-soon-content fadeInUp">
+                <h2 class="coming-soon-title">PRÓXIMAMENTE</h2>
+                <h3 class="coming-soon-subtitle">LOS ENFRENTAMIENTOS QUE CAMBIARÁN TODO</h3>
+                <p class="coming-soon-description">
+                    Los combates más esperados del año están siendo preparados. Cada emparejamiento ha sido cuidadosamente 
+                    seleccionado para ofrecerte la máxima emoción y espectáculo. Las carteleras completas se anunciarán muy pronto.
+                </p>
+                
+                <div class="fights-preview">
+                    <div class="fight-preview-card fadeInUp">
+                        <div class="fight-category">COMBATES PRINCIPALES</div>
+                        <div class="fight-description">
+                            Los combates más esperados de la noche que coronarán a los campeones del octágono.
                         </div>
-                        <span class="fighter-discipline">MMA • Brazilian Jiu-Jitsu </span>
+                    </div>
+                    
+                    <div class="fight-preview-card fadeInUp">
+                        <div class="fight-category">NUEVAS PROMESAS</div>
+                        <div class="fight-description">
+                            Los talentos emergentes tendrán su oportunidad de brillar y demostrar su valía en el octágono.
+                        </div>
+                    </div>
+                    
+                    <div class="fight-preview-card fadeInUp">
+                        <div class="fight-category">PELEAS ESPECIALES</div>
+                        <div class="fight-description">
+                            Enfrentamientos únicos que no te puedes perder.
+                        </div>
                     </div>
                 </div>
-				
-				<div class="fighter-card fadeInUp">
-                    <div class="fighter-image">
-                        <img src="images/mihai-dogaru.jpg" alt="Mihai Dogaru">
-                    </div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Mihai Dogaru</h3>
-                        <p class="fighter-nickname">"El Halcón"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">-</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">Welter</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">6-3</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">5</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">Boxing • Muay Thai</span>
-                    </div>
-                </div>
-
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">
-                        <img src="images\amiran.jpeg" alt="Amiran Liparteniani">
-                    </div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Amiran Liparteniani</h3>
-                        <p class="fighter-nickname">"-"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">-</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">Pesado</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">6-3</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">5</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">Wrestling • Sambo</span>
-                    </div>
-                </div>
-
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">
-                        <img src="images/adrian-baranda.jpg" alt="Adrián Baranda">
-                    </div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Adrián Baranda</h3>
-                        <p class="fighter-nickname">"Notorius"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">22</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">Ligero</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">2-1</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">1</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">Kickboxing • Jiu-Jitsu</span>
-                    </div>
-                </div>
-
-
-                <div class="fighter-card fadeInUp">
-                    <div class="fighter-image">
-                        <img src="images\diego_vaquero.jpeg" alt="Javier Santos">
-                    </div>
-                    <div class="fighter-info">
-                        <h3 class="fighter-name">Diego Vaquero</h3>
-                        <p class="fighter-nickname">"-"</p>
-                        <div class="fighter-stats">
-                            <div class="fighter-stat">
-                                <div class="stat-label">Edad</div>
-                                <div class="stat-value">-</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Peso</div>
-                                <div class="stat-value">Pluma</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Record</div>
-                                <div class="stat-value">1-0</div>
-                            </div>
-                            <div class="fighter-stat">
-                                <div class="stat-label">Finalizaciones</div>
-                                <div class="stat-value">1</div>
-                            </div>
-                        </div>
-                        <span class="fighter-discipline">Muay Thai • BJJ</span>
+                
+                <div class="notification-signup">
+                    <h4 class="notification-title">SÉ EL PRIMERO EN SABERLO</h4>
+                    <p class="notification-text">
+                        Síguenos en nuestras redes sociales para recibir las últimas actualizaciones sobre los combates, 
+                        emparejamientos y toda la información del evento.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link">
+                            📷 Instagram
+                        </a>
+                        <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
+                            ✉️ Email
+                        </a>
                     </div>
                 </div>
             </div>
@@ -707,8 +673,8 @@
             <div class="sponsor-item">
                 <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
             </div>
-			<div class="sponsor-item">
-                <img src="images\logo_aemma.png" alt="Diorse" class="sponsor-logo">
+            <div class="sponsor-item">
+                <img src="images/logo_aemma.png" alt="AEMMA" class="sponsor-logo">
             </div>
         </div>
         <p class="sponsors-text">Gracias por hacer posible este evento</p>
@@ -746,33 +712,43 @@
             });
         }, observerOptions);
 
-        // Observe fighter cards for staggered animations
+        // Observe elements for animations
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.fighter-card');
+            const cards = document.querySelectorAll('.fight-preview-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(50px)';
-                card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+                card.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
                 observer.observe(card);
             });
 
             // Animate sections
-            const sections = document.querySelectorAll('.sponsors-section');
+            const sections = document.querySelectorAll('.coming-soon-section, .sponsors-section');
             sections.forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(30px)';
                 section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(section);
             });
+
+            // Animate coming soon content
+            const comingSoonContent = document.querySelector('.coming-soon-content');
+            if (comingSoonContent) {
+                comingSoonContent.style.opacity = '0';
+                comingSoonContent.style.transform = 'translateY(50px)';
+                comingSoonContent.style.transition = 'opacity 1s ease 0.3s, transform 1s ease 0.3s';
+                observer.observe(comingSoonContent);
+            }
         });
 
-        // Fighter card click effects
-        document.querySelectorAll('.fighter-card').forEach(card => {
-            card.addEventListener('click', function() {
+        // Card hover effects
+        document.querySelectorAll('.fight-preview-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-15px) scale(1.02)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-10px)';
-                }, 200);
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px)';
             });
         });
 
@@ -780,9 +756,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
