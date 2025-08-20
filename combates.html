@@ -25,7 +25,7 @@
             line-height: 1.4;
         }
         
-        /* Header */
+        /* Header - Completamente Optimizado */
         .header {
             position: fixed;
             top: 0;
@@ -33,10 +33,11 @@
             z-index: 1000;
             background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
-            padding: 10px 0;
+            padding: 5px 0;
             border-bottom: 2px solid #333;
             transition: all 0.3s ease;
-            height: 80px;
+            height: auto;
+            min-height: 60px;
         }
         
         .header-content {
@@ -45,48 +46,52 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            height: 100%;
+            padding: 0 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .logo-section {
             text-align: center;
+            flex-shrink: 0;
         }
         
         .logo-img {
-            height: 120px;
+            height: clamp(50px, 8vw, 80px);
             width: auto;
+            max-width: 200px;
         }
         
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: clamp(15px, 4vw, 30px);
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border: 1px solid transparent;
+            border-radius: 5px;
+            text-align: center;
+            white-space: nowrap;
         }
         
-        .nav-menu a:hover {
-            border: 1px solid #fff;
-            background: rgba(255,255,255,0.1);
-        }
-
+        .nav-menu a:hover,
         .nav-menu a.active {
             border: 1px solid #fff;
             background: rgba(255,255,255,0.1);
         }
         
-        /* Hero Section */
+        /* Hero Section - Mejorado para móvil */
         .fights-hero {
-            min-height: 60vh;
+            min-height: 50vh;
             background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
             display: flex;
             align-items: center;
@@ -94,11 +99,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 120px;
-            padding-bottom: 50px;
+            padding: clamp(80px, 15vh, 120px) 15px clamp(30px, 8vh, 50px);
+            margin-top: 60px;
         }
         
-        /* Cage Effect Background */
         .fights-hero::before {
             content: '';
             position: absolute;
@@ -109,7 +113,7 @@
             background-image: 
                 linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%),
                 linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%);
-            background-size: 60px 60px;
+            background-size: clamp(30px, 8vw, 60px) clamp(30px, 8vw, 60px);
             animation: cageMove 20s linear infinite;
             transform: translate(-10%, -10%);
         }
@@ -122,15 +126,15 @@
         .fights-hero-content {
             z-index: 10;
             max-width: 800px;
-            padding: 0 20px;
+            width: 100%;
         }
         
         .fights-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 400;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: 15px;
             text-shadow: 
                 0 0 30px rgba(255,255,255,0.5),
                 0 0 60px rgba(255,255,255,0.3),
@@ -155,23 +159,22 @@
         
         .fights-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: clamp(0.9rem, 3vw, 1.5rem);
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: clamp(1px, 0.5vw, 2px);
             color: #ddd;
             font-style: italic;
+            line-height: 1.3;
         }
         
-        /* NUEVA SECCIÓN DE COMBATES ANUNCIADOS - MEJORADA */
+        /* Sección de Combates - Optimizada */
         .announced-fights-section {
             background: radial-gradient(ellipse at center, #111 0%, #000 100%);
-            padding: 120px 0;
+            padding: clamp(60px, 12vh, 120px) 15px;
             position: relative;
-            min-height: 100vh;
             overflow: hidden;
         }
         
-        /* Fondo dinámico mejorado */
         .announced-fights-section::before {
             content: '';
             position: absolute;
@@ -199,9 +202,8 @@
         }
         
         .announced-fights-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
             text-align: center;
             position: relative;
             z-index: 10;
@@ -209,17 +211,16 @@
         
         .fights-section-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-size: clamp(2.5rem, 8vw, 6rem);
             font-weight: 400;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
+            letter-spacing: clamp(3px, 1vw, 8px);
+            margin-bottom: 15px;
             background: linear-gradient(45deg, #fff, #ccc, #fff);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: titleShine 4s ease-in-out infinite;
-            text-shadow: none;
             position: relative;
         }
         
@@ -244,9 +245,9 @@
         
         .fights-section-subtitle {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            letter-spacing: 6px;
-            margin-bottom: 80px;
+            font-size: clamp(1.3rem, 4vw, 2.5rem);
+            letter-spacing: clamp(2px, 1vw, 6px);
+            margin-bottom: clamp(40px, 8vh, 80px);
             color: #ddd;
             text-transform: uppercase;
             position: relative;
@@ -255,10 +256,10 @@
         .fights-section-subtitle::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
+            width: clamp(100px, 25vw, 200px);
             height: 3px;
             background: linear-gradient(90deg, transparent, #fff, transparent);
             animation: underlineGlow 2s ease-in-out infinite alternate;
@@ -267,120 +268,65 @@
         @keyframes underlineGlow {
             0% { 
                 box-shadow: 0 0 10px rgba(255,255,255,0.5);
-                width: 150px;
+                width: clamp(80px, 20vw, 150px);
             }
             100% { 
                 box-shadow: 0 0 20px rgba(255,255,255,0.8);
-                width: 250px;
+                width: clamp(120px, 30vw, 250px);
             }
         }
         
-        /* Tarjetas de Combate - COMPLETAMENTE REDISEÑADAS */
+        /* Tarjetas de Combate - Completamente Responsivas */
         .fights-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 100px;
-            max-width: 1100px;
+            gap: clamp(50px, 10vh, 100px);
+            max-width: 1000px;
             margin: 0 auto;
         }
         
         .fight-card {
             background: linear-gradient(135deg, 
-                rgba(255,255,255,0.25) 0%,  /* Aumenta la opacidad para el efecto de cristal */
+                rgba(255,255,255,0.25) 0%,
                 rgba(255,255,255,0.1) 50%, 
                 rgba(0,0,0,0.3) 100%);
-            border: 3px solid rgba(255,255,255,0.4); /* Borde blanco semi-transparente */
-            background-clip: padding-box;
-            padding: 60px 40px;
+            border: 2px solid rgba(255,255,255,0.4);
+            padding: clamp(30px, 6vw, 60px) clamp(20px, 4vw, 40px);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(30px); /* Valor del blur aumentado */
+            backdrop-filter: blur(20px);
             transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
             border-radius: 20px;
             box-shadow: 
-                0 20px 50px rgba(0,0,0,0.8),  /* Sombra más oscura para la profundidad */
-                0 0 30px rgba(255,255,255,0.2); /* Resplandor blanco sutil */
+                0 15px 40px rgba(0,0,0,0.6),
+                0 0 20px rgba(255,255,255,0.1);
         }
         
-        /* Borde animado brillante */
-        .fight-card::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, 
-                #fff, #ccc, #fff, #999, #fff, #ccc, #fff);
-            background-size: 400% 400%;
-            z-index: -2;
-            opacity: 0;
-            transition: opacity 0.7s ease;
-            animation: borderFlow 3s linear infinite;
-            border-radius: 23px;
-        }
-        
-        @keyframes borderFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Efectos de partículas en hover */
-        .fight-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 2px, transparent 2px),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 1px, transparent 1px),
-                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px, 30px 30px, 40px 40px;
-            opacity: 0;
-            transition: all 0.5s ease;
-            pointer-events: none;
-            animation: particles 6s linear infinite;
-        }
-        
-        @keyframes particles {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(180deg); }
-        }
-        
-        /* Efectos hover sutiles para la tarjeta completa */
         .fight-card:hover {
             background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.3) 100%);
-            border: 3px solid #fff;
-        }
-        
-        .fight-card:hover::before {
-            opacity: 0; /* Desactiva el borde animado */
-        }
-        
-        .fight-card:hover::after {
-            opacity: 0; /* Desactiva las partículas */
+            border: 2px solid #fff;
+            transform: translateY(-5px);
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,255,255,0.3);
         }
         
         .fighters-container {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            gap: 60px;
+            gap: clamp(20px, 6vw, 60px);
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: clamp(25px, 5vw, 40px);
             position: relative;
         }
         
-        /* Efectos de energía entre luchadores */
+        /* Línea de energía entre luchadores */
         .fighters-container::before {
             content: '';
             position: absolute;
             top: 50%;
-            left: 35%;
-            right: 35%;
+            left: 30%;
+            right: 30%;
             height: 2px;
             background: linear-gradient(90deg, 
                 transparent, 
@@ -405,121 +351,90 @@
             }
         }
         
-        /* Información de cada luchador - MEJORADA */
         .fighter-info {
             text-align: center;
             position: relative;
             transition: all 0.5s ease;
         }
         
-        /* Efectos hover sutiles para la información del luchador */
         .fighter-info:hover {
-            transform: scale(1.05); /* Escala sutil */
+            transform: scale(1.02);
         }
         
         .fighter-photo {
-            width: 280px;
-            height: 280px;
+            width: clamp(120px, 25vw, 280px);
+            height: clamp(120px, 25vw, 280px);
             border-radius: 50%;
-            border: 6px solid rgba(255,255,255,0.3);
+            border: 4px solid rgba(255,255,255,0.3);
             object-fit: cover;
             object-position: center;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             box-shadow: 
-                0 15px 40px rgba(0,0,0,0.6),
-                inset 0 0 0 3px rgba(255,255,255,0.1);
+                0 10px 30px rgba(0,0,0,0.6),
+                inset 0 0 0 2px rgba(255,255,255,0.1);
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             z-index: 2;
         }
         
-        /* Aura brillante alrededor de la foto */
-        .fighter-photo::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, 
-                rgba(255,255,255,0.4), 
-                rgba(255,255,255,0.1), 
-                rgba(255,255,255,0.4), 
-                rgba(255,255,255,0.1), 
-                rgba(255,255,255,0.4));
-            z-index: -1;
-            opacity: 0;
-            transition: all 0.5s ease;
-            animation: rotate 4s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
         .fighter-info:hover .fighter-photo {
             border-color: rgba(255,255,255,0.8);
             box-shadow: 
-                0 25px 60px rgba(0,0,0,0.8),
-                0 0 40px rgba(255,255,255,0.4),
-                inset 0 0 0 4px rgba(255,255,255,0.2);
-            transform: scale(1.05); /* Escala sutil */
-        }
-        
-        .fighter-info:hover .fighter-photo::before {
-            opacity: 0; /* Desactiva el aura */
+                0 20px 50px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,255,255,0.4),
+                inset 0 0 0 3px rgba(255,255,255,0.2);
+            transform: scale(1.03);
         }
         
         .fighter-name {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            letter-spacing: 4px;
-            margin-bottom: 15px;
+            font-size: clamp(1.3rem, 4vw, 2.5rem);
+            letter-spacing: clamp(1px, 0.5vw, 4px);
+            margin-bottom: 12px;
             text-transform: uppercase;
             text-shadow: 
                 2px 2px 4px rgba(0,0,0,0.8),
                 0 0 20px rgba(255,255,255,0.3);
             transition: all 0.3s ease;
-            position: relative;
+            line-height: 1.1;
         }
         
         .fighter-info:hover .fighter-name {
             text-shadow: 
                 2px 2px 4px rgba(0,0,0,0.8),
                 0 0 30px rgba(255,255,255,0.6);
-            transform: scale(1.02); /* Escala sutil */
+            transform: scale(1.02);
         }
         
         .fighter-team {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
             font-weight: 400;
             color: #bbb;
-            letter-spacing: 3px;
+            letter-spacing: clamp(1px, 0.3vw, 3px);
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: clamp(8px, 2vw, 15px) clamp(15px, 4vw, 30px);
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 25px;
             display: inline-block;
             background: rgba(255,255,255,0.05);
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         
         .fighter-info:hover .fighter-team {
             color: #fff;
             border-color: rgba(255,255,255,0.6);
             background: rgba(255,255,255,0.1);
-            transform: scale(1.02); /* Escala sutil */
+            transform: scale(1.02);
         }
         
-        /* Texto VS - SUPER MEJORADO */
+        /* Texto VS - Optimizado */
         .vs-text {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(4rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 400;
-            letter-spacing: 6px;
+            letter-spacing: clamp(2px, 1vw, 6px);
             background: linear-gradient(45deg, #fff, #ccc, #fff);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -528,7 +443,6 @@
             animation: vsAnimation 2s ease-in-out infinite alternate;
             position: relative;
             z-index: 3;
-            text-shadow: none;
         }
         
         .vs-text::after {
@@ -539,8 +453,8 @@
             right: 0;
             z-index: -1;
             text-shadow: 
-                0 0 30px rgba(255,255,255,0.8),
-                0 0 60px rgba(255,255,255,0.4);
+                0 0 20px rgba(255,255,255,0.6),
+                0 0 40px rgba(255,255,255,0.3);
             -webkit-text-fill-color: transparent;
             background: none;
         }
@@ -553,210 +467,164 @@
             }
             100% { 
                 background-position: 100% 50%;
-                transform: scale(1.15) rotate(2deg);
+                transform: scale(1.1) rotate(1deg);
                 filter: brightness(1.2);
             }
         }
         
-        /* Categoría del combate - MEJORADA */
+        /* Categoría del combate */
         .fight-category {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            letter-spacing: 4px;
+            font-size: clamp(1.2rem, 3.5vw, 2rem);
+            letter-spacing: clamp(2px, 0.8vw, 4px);
             text-transform: uppercase;
             color: #fff;
             text-align: center;
-            padding: 25px 40px;
+            padding: clamp(15px, 3vw, 25px) clamp(20px, 5vw, 40px);
             border: 2px solid transparent;
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             backdrop-filter: blur(10px);
-            margin-top: 30px;
+            margin-top: clamp(20px, 4vw, 30px);
             position: relative;
             overflow: hidden;
             border-radius: 50px;
             transition: all 0.5s ease;
         }
         
-        .fight-category::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.5), transparent, rgba(255,255,255,0.5));
-            z-index: -1;
-            border-radius: 52px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        /* Efectos hover sutiles para la categoría */
         .fight-card:hover .fight-category {
             transform: scale(1.02);
             text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.3);
         }
         
-        .fight-card:hover .fight-category::before {
-            opacity: 0; /* Desactiva el brillo */
-        }
-        
-        /* Sección de Notificaciones - MEJORADA */
+        /* Sección de Notificaciones */
         .notification-signup {
             background: linear-gradient(135deg, 
                 rgba(255,255,255,0.15) 0%, 
                 rgba(255,255,255,0.05) 100%);
-            border: 3px solid rgba(255,255,255,0.3);
-            padding: 60px;
-            margin: 120px 0;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: clamp(40px, 8vw, 60px);
+            margin: clamp(60px, 12vh, 120px) 0;
             backdrop-filter: blur(20px);
-            border-radius: 30px;
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
             transition: all 0.5s ease;
         }
         
-        .notification-signup::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.8s ease;
-        }
-        
-        .notification-signup:hover::before {
-            left: 100%;
-        }
-        
         .notification-signup:hover {
             border-color: rgba(255,255,255,0.6);
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         
         .notification-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 25px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: 20px;
             color: #fff;
             text-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
         
         .notification-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
             font-weight: 300;
             color: #ddd;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             letter-spacing: 1px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: clamp(15px, 4vw, 40px);
             flex-wrap: wrap;
         }
         
         .social-link {
             background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
             color: #fff;
-            padding: 20px 40px;
+            padding: clamp(12px, 3vw, 20px) clamp(20px, 5vw, 40px);
             font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: 500;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-decoration: none;
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-        }
-        
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-        }
-        
-        .social-link:hover::before {
-            width: 300px;
-            height: 300px;
+            text-align: center;
         }
         
         .social-link:hover {
             background: rgba(255,255,255,0.9);
             color: #000;
-            transform: translateY(-8px) scale(1.1);
+            transform: translateY(-3px) scale(1.05);
             border-color: rgba(255,255,255,0.8);
-            box-shadow: 0 15px 30px rgba(255,255,255,0.3);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
         }
         
         /* Sponsors Section */
         .sponsors-section {
             background: #111;
-            padding: 100px 0;
+            padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
         }
 
         .sponsors-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: 30px;
             color: #fff;
         }
 
         .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 180px), 1fr));
+            gap: clamp(15px, 4vw, 30px);
             max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
+            margin: 0 auto 30px;
             align-items: center;
             justify-items: center;
         }
 
         .sponsor-item {
             background: rgba(255,255,255,0.05);
-            padding: 20px;
+            padding: clamp(15px, 3vw, 20px);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
+            border-radius: 10px;
+            width: 100%;
+            aspect-ratio: 1;
         }
 
         .sponsor-item:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(255,255,255,0.3);
         }
 
         .sponsor-logo {
             max-width: 100%;
+            max-height: 100%;
             height: auto;
             opacity: 0.8;
             transition: all 0.3s ease;
+            object-fit: contain;
         }
 
         .sponsor-item:hover .sponsor-logo {
@@ -765,26 +633,26 @@
 
         .sponsors-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: 300;
             letter-spacing: 1px;
             color: #ddd;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         /* Back Button */
         .back-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #fff;
             color: #000;
-            width: 60px;
-            height: 60px;
+            width: clamp(50px, 10vw, 60px);
+            height: clamp(50px, 10vw, 60px);
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -803,51 +671,42 @@
         /* Footer */
         .footer {
             background: #000;
-            padding: 40px 0;
+            padding: clamp(30px, 6vh, 40px) 15px;
             text-align: center;
             border-top: 2px solid #333;
         }
         
         .footer-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: #666;
             letter-spacing: 1px;
         }
         
-        /* Responsive Design */
+        /* Media Queries Específicas */
         @media (max-width: 768px) {
-            .header {
-                height: 70px;
-            }
-            
             .header-content {
                 flex-direction: column;
-                gap: 10px;
-                padding: 5px 20px;
+                padding: 8px 15px;
+            }
+            
+            .logo-img {
+                height: 50px;
             }
             
             .nav-menu {
-                gap: 20px;
-            }
-            
-            .nav-menu a {
-                font-size: 1rem;
-                padding: 5px 10px;
-            }
-            
-            .fights-hero {
-                padding-top: 100px;
+                gap: 15px;
             }
             
             .fighters-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 25px;
                 text-align: center;
             }
             
             .vs-text {
                 order: 2;
+                margin: 15px 0;
             }
             
             .fighter-info:first-child {
@@ -858,13 +717,8 @@
                 order: 3;
             }
             
-            .fighter-photo {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .fight-card {
-                padding: 40px 25px;
+            .fighters-container::before {
+                display: none;
             }
             
             .social-links {
@@ -872,48 +726,53 @@
                 align-items: center;
             }
             
-            .sponsors-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .fighters-container::before {
-                display: none;
+            .social-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
         
         @media (max-width: 480px) {
-            .header {
-                height: 60px;
-            }
-            
             .fights-hero {
-                padding-top: 90px;
-            }
-            
-            .fighter-photo {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .fighters-container {
-                gap: 30px;
+                margin-top: 80px;
+                padding-top: 40px;
             }
             
             .fight-card {
-                padding: 30px 20px;
-                margin: 0 10px;
+                margin: 0 5px;
+            }
+            
+            .fighter-photo {
+                width: 140px;
+                height: 140px;
             }
             
             .notification-signup {
-                padding: 40px 25px;
-                margin: 80px 10px;
+                margin: 40px 5px;
+            }
+            
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
         }
         
-        /* Animaciones de entrada mejoradas */
+        @media (min-width: 1200px) {
+            .fighters-container {
+                gap: 80px;
+            }
+            
+            .fighter-photo {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        
+        /* Animaciones de entrada */
         .fadeInUp {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             animation: fadeInUp 1s ease forwards;
         }
         
@@ -925,27 +784,41 @@
         }
         
         .fight-card {
-            animation-delay: 0.3s;
+            animation-delay: 0.2s;
         }
         
         .fight-card:nth-child(2) {
-            animation-delay: 0.6s;
+            animation-delay: 0.4s;
         }
         
         .fight-card:nth-child(3) {
-            animation-delay: 0.9s;
+            animation-delay: 0.6s;
         }
         
-        /* Efectos especiales adicionales */
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+        /* Optimizaciones de rendimiento */
+        .fighter-photo,
+        .fight-card,
+        .social-link {
+            will-change: transform;
         }
         
-        .shimmer-effect {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
+        /* Mejoras adicionales para accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Mejora para pantallas de alta densidad */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .fighter-photo {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
         }
     </style>
 </head>
@@ -981,7 +854,7 @@
                 <div class="fight-card fadeInUp">
                     <div class="fighters-container">
                         <div class="fighter-info">
-                            <img src="images\mandinganu_sin_fondo.png" alt="Domingo Mandinganu" class="fighter-photo">
+                            <img src="images/mandinganu_sin_fondo.png" alt="Domingo Mandinganu" class="fighter-photo" loading="lazy">
                             <h3 class="fighter-name">DOMINGO<br>MANDINGANU</h3>
                             <p class="fighter-team">BLACKS BILBAO</p>
                         </div>
@@ -989,7 +862,7 @@
                         <div class="vs-text">VS</div>
                         
                         <div class="fighter-info">
-                            <img src="images\grigore_sin_fondo.png" alt="Lucian Grigore" class="fighter-photo">
+                            <img src="images/grigore_sin_fondo.png" alt="Lucian Grigore" class="fighter-photo" loading="lazy">
                             <h3 class="fighter-name">LUCIAN<br>GRIGORE</h3>
                             <p class="fighter-team">PGT SPAIN</p>
                         </div>
@@ -1001,7 +874,7 @@
 				<div class="fight-card fadeInUp">
                     <div class="fighters-container">
                         <div class="fighter-info">
-                            <img src="images\dieye_sin_fondo.png" alt="Ismaila Dieye" class="fighter-photo">
+                            <img src="images/dieye_sin_fondo.png" alt="Ismaila Dieye" class="fighter-photo" loading="lazy">
                             <h3 class="fighter-name">ISMAILA<br>DIEYE</h3>
                             <p class="fighter-team">CD TIBET</p>
                         </div>
@@ -1009,7 +882,7 @@
                         <div class="vs-text">VS</div>
                         
                         <div class="fighter-info">
-                            <img src="images\baranda_sin_fondo.png" alt="Adrián Baranda" class="fighter-photo">
+                            <img src="images/baranda_sin_fondo.png" alt="Adrián Baranda" class="fighter-photo" loading="lazy">
                             <h3 class="fighter-name">ADRIÁN<br>BARANDA</h3>
                             <p class="fighter-team">PGT SPAIN</p>
                         </div>
@@ -1017,8 +890,7 @@
                     
                     <div class="fight-category">FEATHERWEIGHT MMA BOUT</div>
                 </div>
-                
-                </div>
+            </div>
             
             <div class="notification-signup fadeInUp">
                 <h4 class="notification-title">SÉ EL PRIMERO EN SABERLO</h4>
@@ -1027,7 +899,7 @@
                     emparejamientos y toda la información del evento.
                 </p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link">
+                    <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link" rel="noopener">
                         📷 Instagram
                     </a>
                     <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
@@ -1042,170 +914,183 @@
         <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
         <div class="sponsors-grid">
             <div class="sponsor-item">
-                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
+                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
+                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo">
+                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
+                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo">
+                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
+                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_aemma.png" alt="AEMMA" class="sponsor-logo">
+                <img src="images/logo_aemma.png" alt="AEMMA" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo">
+                <img src="images/autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo" loading="lazy">
             </div>
 			<div class="sponsor-item">
-                <img src="images\logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo">
+                <img src="images/logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo" loading="lazy">
             </div>
         </div>
         <p class="sponsors-text">Gracias por hacer posible este evento</p>
     </section>
 
-    <button class="back-button" onclick="window.location.href='index.html'">🏠</button>
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Volver al inicio">🏠</button>
 
     <footer class="footer">
         <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
+        // Optimización del header con scroll
+        let ticking = false;
+        
+        function updateHeader() {
             const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
                 header.style.background = 'rgba(0,0,0,0.98)';
+                header.style.backdropFilter = 'blur(15px)';
             } else {
                 header.style.background = 'rgba(0,0,0,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             }
-        });
+            
+            ticking = false;
+        }
+        
+        function requestHeaderUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
 
-        // Intersection Observer for enhanced animations
+        // Intersection Observer optimizado
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: [0, 0.1, 0.5],
+            rootMargin: '0px 0px -10% 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                     
-                    // Add shimmer effect to fight cards when they appear
-                    if (entry.target.classList.contains('fight-card')) {
-                        setTimeout(() => {
-                            entry.target.classList.add('shimmer-effect');
-                            setTimeout(() => {
-                                entry.target.classList.remove('shimmer-effect');
-                            }, 2000);
-                        }, 500);
-                    }
+                    // Desconectar el observer una vez que el elemento está visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Enhanced animations
+        // Inicialización optimizada
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate fight cards with stagger
-            const fightCards = document.querySelectorAll('.fight-card');
-            fightCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(80px)';
-                card.style.transition = `opacity 1s ease ${index * 0.3}s, transform 1s ease ${index * 0.3}s`;
-                observer.observe(card);
-            });
-
-            // Animate sections
-            const sections = document.querySelectorAll('.announced-fights-section, .sponsors-section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(50px)';
-                section.style.transition = 'opacity 1s ease, transform 1s ease';
-                observer.observe(section);
-            });
-
-            // Animate titles and content with enhanced effects
-            const animatedElements = document.querySelectorAll('.fights-section-title, .fights-section-subtitle, .notification-signup');
+            // Animación de elementos con mejor performance
+            const animatedElements = document.querySelectorAll('.fadeInUp');
+            
             animatedElements.forEach((element, index) => {
                 element.style.opacity = '0';
-                element.style.transform = 'translateY(40px)';
-                element.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+                
                 observer.observe(element);
             });
 
-            // Enhanced hover effects for fighter photos
-            const fighterPhotos = document.querySelectorAll('.fighter-photo');
-            fighterPhotos.forEach(photo => {
-                photo.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.1) rotateY(10deg)';
-                    this.style.filter = 'brightness(1.2) contrast(1.1)';
+            // Hover effects optimizados para móvil
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            
+            if (!isMobile) {
+                // Efectos hover solo en desktop
+                const fighterPhotos = document.querySelectorAll('.fighter-photo');
+                fighterPhotos.forEach(photo => {
+                    photo.addEventListener('mouseenter', function() {
+                        this.style.transform = 'scale(1.05)';
+                        this.style.filter = 'brightness(1.1) contrast(1.05)';
+                    }, { passive: true });
+                    
+                    photo.addEventListener('mouseleave', function() {
+                        this.style.transform = 'scale(1)';
+                        this.style.filter = 'brightness(1) contrast(1)';
+                    }, { passive: true });
+                });
+            }
+
+            // Lazy loading para imágenes que no tienen loading="lazy"
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img:not([loading])');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                });
+            } else {
+                // Fallback para navegadores que no soportan loading="lazy"
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
                 });
                 
-                photo.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1) rotateY(0deg)';
-                    this.style.filter = 'brightness(1) contrast(1)';
+                document.querySelectorAll('img').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Preload de imágenes críticas
+            const criticalImages = [
+                'images/logo_kgb.png',
+                'images/mandinganu_sin_fondo.png',
+                'images/grigore_sin_fondo.png'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+
+        // Manejo de errores de imágenes
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.style.opacity = '0.5';
+                e.target.alt = 'Imagen no disponible';
+                console.warn('Error loading image:', e.target.src);
+            }
+        }, true);
+
+        // Optimización de resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Recalcular elementos si es necesario
+                document.body.style.height = 'auto';
+            }, 250);
+        }, { passive: true });
+
+        // Service Worker para cache (opcional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function() {
+                    // Service worker no disponible
                 });
             });
-
-            // Add dynamic particles effect
-            function createParticle() {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.width = '2px';
-                particle.style.height = '2px';
-                particle.style.background = 'rgba(255,255,255,0.5)';
-                particle.style.borderRadius = '50%';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '1';
-                
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight;
-                
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                document.body.appendChild(particle);
-                
-                // Animate particle
-                const animation = particle.animate([
-                    { transform: 'translate(0, 0)', opacity: 0 },
-                    { transform: 'translate(50px, -50px)', opacity: 1 },
-                    { transform: 'translate(100px, -100px)', opacity: 0 }
-                ], {
-                    duration: 3000,
-                    easing: 'ease-out'
-                });
-                
-                animation.addEventListener('finish', () => {
-                    particle.remove();
-                });
-            }
-
-            // Create particles periodically
-            setInterval(createParticle, 2000);
-        });
-
-        // Enhanced scroll effects
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            // Parallax effect on hero background
-            const hero = document.querySelector('.fights-hero');
-            if (hero) {
-                hero.style.transform = `translateY(${rate}px)`;
-            }
-        });
+        }
     </script>
 </body>
 </html>
