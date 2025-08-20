@@ -25,7 +25,7 @@
             line-height: 1.4;
         }
         
-        /* Header */
+        /* Header - Completamente Optimizado */
         .header {
             position: fixed;
             top: 0;
@@ -33,10 +33,11 @@
             z-index: 1000;
             background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 2px solid #333;
             transition: all 0.3s ease;
-            height: 80px;
+            height: auto;
+            min-height: 60px;
         }
         
         .header-content {
@@ -45,38 +46,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            height: 100%;
+            padding: 0 15px;
+            position: relative;
         }
         
         .logo-section {
-            text-align: center;
+            flex-shrink: 0;
+            z-index: 1001;
         }
 
         .header-logo {
-            height: 120px;
+            height: clamp(45px, 8vw, 70px);
             width: auto;
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50px;
-            transform: translateY(-50%);
+            max-width: 180px;
+            transition: all 0.3s ease;
         }
         
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: clamp(20px, 4vw, 30px);
+            align-items: center;
         }
         
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border: 1px solid transparent;
+            border-radius: 4px;
+            white-space: nowrap;
         }
         
         .nav-menu a:hover,
@@ -85,27 +87,29 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Mobile menu button (hamburguer) */
+        /* Mobile menu - Mejorado */
         .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 30px;
-            height: 25px;
+            width: 28px;
+            height: 22px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1002;
+            padding: 2px;
         }
 
         .menu-toggle span {
             display: block;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background-color: #fff;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
         }
 
         .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(4px, 4px);
         }
 
         .menu-toggle.active span:nth-child(2) {
@@ -116,23 +120,20 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Hero Section */
+        /* Hero Section - Optimizado */
         .hero {
             min-height: 100vh;
             background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 150px;
-            padding-bottom: 50px;
+            padding: clamp(80px, 15vh, 150px) 15px clamp(30px, 8vh, 50px);
         }
         
-        /* Cage Effect Background */
+        /* Cage Effect Background - Responsive */
         .hero::before {
             content: '';
             position: absolute;
@@ -143,7 +144,7 @@
             background-image: 
                 linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%),
                 linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.2) 50%, transparent 52%);
-            background-size: 80px 80px;
+            background-size: clamp(40px, 8vw, 80px) clamp(40px, 8vw, 80px);
             animation: cageMove 25s linear infinite;
             transform: translate(-10%, -10%);
         }
@@ -159,7 +160,7 @@
                 linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
                 linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%),
                 radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            background-size: 40px 40px;
+            background-size: clamp(20px, 6vw, 40px) clamp(20px, 6vw, 40px);
             animation: cageMoveDiagonal 20s linear infinite reverse;
             transform: translate(-10%, -10%);
         }
@@ -177,23 +178,22 @@
         .hero-content {
             z-index: 10;
             max-width: 900px;
-            padding: 0 20px;
-            margin-top: 0;
+            width: 100%;
         }
         
         .hero-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-size: clamp(2rem, 8vw, 6rem);
             font-weight: 400;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: 15px;
             text-shadow: 
                 0 0 30px rgba(255,255,255,0.5),
                 0 0 60px rgba(255,255,255,0.3),
                 2px 2px 0px rgba(0,0,0,0.8);
             animation: pulse 3s ease-in-out infinite alternate;
             word-wrap: break-word;
-            text-align: center;
+            line-height: 1.1;
         }
         
         @keyframes pulse {
@@ -213,27 +213,29 @@
         
         .hero-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: clamp(1rem, 3vw, 2rem);
             font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
+            letter-spacing: clamp(1px, 0.5vw, 2px);
+            margin-bottom: clamp(25px, 6vh, 40px);
             color: #ddd;
             font-style: italic;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            line-height: 1.3;
         }
         
         .event-info {
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(15px);
             border: 2px solid rgba(255,255,255,0.3);
-            padding: 30px;
-            margin: 40px 0;
+            padding: clamp(20px, 4vw, 30px);
+            margin: clamp(25px, 6vh, 40px) 0;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            letter-spacing: 3px;
-            border-radius: 0;
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            letter-spacing: clamp(1px, 0.5vw, 3px);
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
+            line-height: 1.2;
         }
         
         .event-info::before {
@@ -246,6 +248,7 @@
             background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
             z-index: -1;
             animation: borderGlow 2s ease-in-out infinite alternate;
+            border-radius: 10px;
         }
         
         @keyframes borderGlow {
@@ -256,11 +259,11 @@
         .cta-button {
             background: #fff;
             color: #000;
-            padding: 20px 50px;
+            padding: clamp(15px, 3vw, 20px) clamp(30px, 6vw, 50px);
             font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -270,6 +273,9 @@
             box-shadow: 0 4px 15px rgba(255,255,255,0.3);
             text-decoration: none;
             display: inline-block;
+            border-radius: 4px;
+            min-height: 44px;
+            text-align: center;
         }
         
         .cta-button:hover {
@@ -295,10 +301,10 @@
             left: 100%;
         }
         
-        /* Countdown Section */
+        /* Countdown Section - Optimizado */
         .countdown-section {
             background: #111;
-            padding: 100px 0;
+            padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
             border-bottom: 3px solid #333;
@@ -306,27 +312,28 @@
         
         .countdown-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: clamp(30px, 6vh, 40px);
             color: #fff;
         }
         
         .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: clamp(20px, 4vw, 40px);
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .countdown-item {
             background: rgba(255,255,255,0.05);
             border: 2px solid rgba(255,255,255,0.1);
-            padding: 30px 20px;
-            min-width: 120px;
+            padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 20px);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 8px;
         }
         
         .countdown-item::before {
@@ -342,7 +349,7 @@
         
         .countdown-item:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(255,255,255,0.3);
         }
         
@@ -352,7 +359,7 @@
         
         .countdown-number {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3rem);
+            font-size: clamp(2rem, 6vw, 3rem);
             color: #fff;
             display: block;
             line-height: 1;
@@ -360,17 +367,18 @@
         
         .countdown-label {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             font-weight: 300;
             letter-spacing: 1px;
             color: #ccc;
             text-transform: uppercase;
+            margin-top: 5px;
         }
         
-        /* About Section */
+        /* About Section - Optimizado */
         .about-section {
             background: #000;
-            padding: 120px 0;
+            padding: clamp(80px, 15vh, 120px) 15px;
             position: relative;
         }
         
@@ -388,7 +396,6 @@
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
             text-align: center;
             position: relative;
             z-index: 10;
@@ -396,48 +403,50 @@
         
         .about-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: clamp(25px, 5vh, 40px);
             color: #fff;
+            line-height: 1.1;
         }
         
         .about-text {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-size: clamp(1rem, 3vw, 1.4rem);
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.6;
             color: #ddd;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
-        /* Social Section */
+        /* Social Section - Optimizado */
         .social-section {
             background: #111;
-            padding: 100px 0;
+            padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
         }
         
         .social-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3rem);
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: clamp(25px, 5vh, 40px);
             color: #fff;
+            line-height: 1.1;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
+            gap: clamp(20px, 6vw, 40px);
+            margin: clamp(25px, 5vh, 40px) 0;
             flex-wrap: wrap;
         }
         
         .social-icon {
-            width: 80px;
-            height: 80px;
+            width: clamp(60px, 12vw, 80px);
+            height: clamp(60px, 12vw, 80px);
             background: rgba(255,255,255,0.1);
             border: 2px solid rgba(255,255,255,0.3);
             display: flex;
@@ -446,9 +455,10 @@
             transition: all 0.3s ease;
             text-decoration: none;
             color: #fff;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             position: relative;
             overflow: hidden;
+            border-radius: 8px;
         }
         
         .social-icon::before {
@@ -466,7 +476,7 @@
         .social-icon:hover {
             background: #fff;
             color: #000;
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255,255,255,0.5);
         }
         
@@ -475,7 +485,7 @@
         }
         
         .social-info {
-            margin-top: 30px;
+            margin-top: clamp(20px, 4vh, 30px);
         }
         
         .social-link {
@@ -483,64 +493,71 @@
             color: #ccc;
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            margin: 10px 0;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin: 8px 0;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+            padding: 5px;
         }
         
         .social-link:hover {
             color: #fff;
         }
 
-        /* Sponsors Section */
+        /* Sponsors Section - Optimizado */
         .sponsors-section {
             background: #111;
-            padding: 100px 0;
+            padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
         }
 
         .sponsors-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3rem);
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: clamp(25px, 5vh, 40px);
             color: #fff;
+            line-height: 1.1;
         }
 
         .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 180px), 1fr));
+            gap: clamp(15px, 4vw, 30px);
             max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
+            margin: 0 auto clamp(20px, 4vh, 40px);
             align-items: center;
             justify-items: center;
         }
 
         .sponsor-item {
             background: rgba(255,255,255,0.05);
-            padding: 20px;
+            padding: clamp(15px, 3vw, 20px);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
+            border-radius: 8px;
+            width: 100%;
+            aspect-ratio: 1;
+            min-height: 80px;
         }
 
         .sponsor-item:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(255,255,255,0.3);
         }
 
         .sponsor-logo {
             max-width: 100%;
+            max-height: 100%;
             height: auto;
             opacity: 0.7;
             transition: all 0.3s ease;
+            object-fit: contain;
         }
 
         .sponsor-item:hover .sponsor-logo {
@@ -554,57 +571,45 @@
             font-weight: 300;
             letter-spacing: 1px;
             color: #ddd;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
-        /* Footer */
+        /* Footer - Optimizado */
         .footer {
             background: #000;
-            padding: 40px 0;
+            padding: clamp(30px, 6vh, 40px) 15px;
             text-align: center;
             border-top: 2px solid #333;
         }
         
         .footer-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: #666;
             letter-spacing: 1px;
         }
         
-        /* Responsive */
+        /* Media Queries Específicas */
         @media (max-width: 768px) {
-            .header {
-                height: 60px;
-            }
-            
             .header-content {
-                padding: 0 20px;
-                justify-content: space-between;
-                flex-direction: row;
-            }
-
-            .header-logo {
-                height: 100px;
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(0,0,0,0.95);
-                backdrop-filter: blur(10px);
+                background: rgba(0,0,0,0.98);
+                backdrop-filter: blur(15px);
                 padding: 20px 0;
                 border-bottom: 2px solid #333;
                 text-align: center;
-                gap: 15px;
+                gap: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             }
 
             .nav-menu.active {
@@ -612,8 +617,10 @@
             }
 
             .nav-menu a {
-                font-size: 1.2rem;
-                padding: 15px;
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                width: 100%;
+                margin: 0;
             }
 
             .menu-toggle {
@@ -624,42 +631,27 @@
                 padding-top: 100px;
             }
             
-            .hero-content {
-                margin-top: -30px;
-            }
-            
             .countdown {
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
             .countdown-item {
-                min-width: 100px;
-                padding: 20px 15px;
-            }
-            
-            .countdown-number {
-                font-size: 2.5rem;
+                min-height: 80px;
             }
             
             .social-icons {
                 gap: 20px;
             }
             
-            .social-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
             .sponsors-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
-            .about-section,
-            .countdown-section,
-            .social-section,
-            .sponsors-section {
-                padding: 80px 0;
+            .event-info {
+                font-size: 1.2rem;
+                word-break: break-word;
             }
         }
         
@@ -668,18 +660,53 @@
                 padding-top: 90px;
             }
             
-            .event-info {
-                padding: 20px;
-                margin: 30px 0;
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                padding: 15px 10px;
+                min-height: 70px;
             }
             
             .cta-button {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .sponsors-grid {
+                gap: 10px;
+            }
+            
+            .social-icons {
+                gap: 15px;
             }
         }
         
-        /* Animations */
+        @media (min-width: 1200px) {
+            .countdown {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 800px;
+            }
+            
+            .sponsors-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Mejoras de accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Animaciones - Optimizadas */
         .fadeInUp {
             opacity: 0;
             transform: translateY(30px);
@@ -691,10 +718,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-        
-        .hero-content > * {
-            animation-delay: 0.3s;
         }
         
         .hero-title {
@@ -712,13 +735,38 @@
         .cta-button {
             animation-delay: 0.6s;
         }
+        
+        /* Optimizaciones de rendimiento */
+        .hero-content > *,
+        .countdown-item,
+        .social-icon,
+        .sponsor-item {
+            will-change: transform;
+        }
+        
+        /* Focus states para accesibilidad */
+        .cta-button:focus,
+        .social-icon:focus,
+        .nav-menu a:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+        
+        /* Mejora para pantallas táctiles */
+        @media (hover: none) and (pointer: coarse) {
+            .countdown-item:hover,
+            .sponsor-item:hover,
+            .social-icon:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <a href="index.html">
+                <a href="index.html" aria-label="KGB - Kombat Games Burgos">
                     <img src="images/logo_kgb.png" alt="KGB Logo" class="header-logo">
                 </a>
             </div>
@@ -727,7 +775,7 @@
                 <a href="luchadores.html">Luchadores</a>
                 <a href="combates.html">Combates</a>
             </nav>
-            <div class="menu-toggle">
+            <div class="menu-toggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -783,138 +831,7 @@
     <section class="social-section">
         <h2 class="social-title">ÚNETE A LA COMUNIDAD DE COMBATIENTES</h2>
         <div class="social-icons">
-            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-icon" rel="noopener" aria-label="Instagram">
                 📷
             </a>
-            <a href="mailto:kombatgamesburgos@gmail.com" class="social-icon">
-                ✉️
-            </a>
-        </div>
-        <div class="social-info">
-            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link">
-                @kombatgamesburgos2025
-            </a>
-            <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
-                kombatgamesburgos@gmail.com
-            </a>
-        </div>
-    </section>
-
-    <section class="sponsors-section">
-        <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
-        <div class="sponsors-grid">
-            <div class="sponsor-item">
-                <img src="images\logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
-            </div>
-            <div class="sponsor-item">
-                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
-            </div>
-            <div class="sponsor-item">
-                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo">
-            </div>
-            <div class="sponsor-item">
-                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
-            </div>
-            <div class="sponsor-item">
-                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo">
-            </div>
-            <div class="sponsor-item">
-                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
-            </div>
-			<div class="sponsor-item">
-                <img src="images\logo_aemma.png" alt="Diorse" class="sponsor-logo">
-            </div>
-			<div class="sponsor-item">
-                <img src="images\autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo">
-            </div>
-			<div class="sponsor-item">
-                <img src="images\logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo">
-            </div>
-        </div>
-        <p class="sponsors-text">Gracias por hacer posible este evento</p>
-    </section>
-
-    <footer class="footer">
-        <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
-    </footer>
-
-    <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const eventDate = new Date('2025-09-20T17:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }
-
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-
-        // Smooth scrolling
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(0,0,0,0.98)';
-            } else {
-                header.style.background = 'rgba(0,0,0,0.95)';
-            }
-        });
-
-        // Toggle mobile menu
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections for animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.countdown-section, .about-section, .sponsors-section, .social-section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(section);
-            });
-        });
-    </script>
-</body>
-</html>
+            <a href="mailto:kombatgame

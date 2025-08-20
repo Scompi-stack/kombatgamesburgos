@@ -25,7 +25,7 @@
             line-height: 1.4;
         }
         
-        /* Header */
+        /* Header - Completamente Optimizado */
         .header {
             position: fixed;
             top: 0;
@@ -33,10 +33,11 @@
             z-index: 1000;
             background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
-            padding: 10px 0;
+            padding: 5px 0;
             border-bottom: 2px solid #333;
             transition: all 0.3s ease;
-            height: 80px;
+            height: auto;
+            min-height: 60px;
         }
         
         .header-content {
@@ -45,38 +46,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            height: 100%;
+            padding: 0 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .logo-section {
             text-align: center;
+            flex-shrink: 0;
         }
         
-        .header-logo {
-            height: 120px;
+        .logo-img {
+            height: clamp(50px, 8vw, 80px);
             width: auto;
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50px;
-            transform: translateY(-50%);
+            max-width: 200px;
         }
         
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: clamp(15px, 4vw, 30px);
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border: 1px solid transparent;
+            border-radius: 5px;
+            text-align: center;
+            white-space: nowrap;
         }
         
         .nav-menu a:hover,
@@ -84,28 +88,30 @@
             border: 1px solid #fff;
             background: rgba(255,255,255,0.1);
         }
-
-        /* Mobile menu button (hamburguer) */
+        
+        /* Mobile menu - Mejorado */
         .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 30px;
-            height: 25px;
+            width: 28px;
+            height: 22px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1002;
+            padding: 2px;
         }
 
         .menu-toggle span {
             display: block;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background-color: #fff;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
         }
 
         .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(4px, 4px);
         }
 
         .menu-toggle.active span:nth-child(2) {
@@ -116,9 +122,9 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Hero Section para Luchadores */
+        /* Hero Section - Mejorado para móvil */
         .fighters-hero {
-            min-height: 60vh;
+            min-height: 50vh;
             background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
             display: flex;
             align-items: center;
@@ -126,11 +132,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 120px;
-            padding-bottom: 50px;
+            padding: clamp(80px, 15vh, 120px) 15px clamp(30px, 8vh, 50px);
+            margin-top: 60px;
         }
         
-        /* Cage Effect Background */
+        /* Cage Effect Background - Responsive */
         .fighters-hero::before {
             content: '';
             position: absolute;
@@ -141,7 +147,7 @@
             background-image: 
                 linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%),
                 linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.15) 50%, transparent 52%);
-            background-size: 60px 60px;
+            background-size: clamp(30px, 8vw, 60px) clamp(30px, 8vw, 60px);
             animation: cageMove 20s linear infinite;
             transform: translate(-10%, -10%);
         }
@@ -154,15 +160,15 @@
         .fighters-hero-content {
             z-index: 10;
             max-width: 800px;
-            padding: 0 20px;
+            width: 100%;
         }
         
         .fighters-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 400;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: 15px;
             text-shadow: 
                 0 0 30px rgba(255,255,255,0.5),
                 0 0 60px rgba(255,255,255,0.3),
@@ -187,18 +193,20 @@
         
         .fighters-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: clamp(0.9rem, 3vw, 1.5rem);
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: clamp(1px, 0.5vw, 2px);
             color: #ddd;
             font-style: italic;
+            line-height: 1.3;
         }
         
-        /* Fighters Grid */
+        /* Fighters Section - Optimizada */
         .fighters-section {
-            background: #000;
-            padding: 100px 0;
+            background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+            padding: clamp(60px, 12vh, 120px) 15px;
             position: relative;
+            overflow: hidden;
         }
         
         .fighters-section::before {
@@ -208,33 +216,134 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M 15 0 L 0 0 0 15" fill="none" stroke="%23222" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%);
+            background-size: 200% 200%, 200% 200%, 40px 40px, 40px 40px;
+            animation: dynamicBg 15s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes dynamicBg {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 100%, 0 0, 0 0; 
+            }
+            50% { 
+                background-position: 100% 100%, 0% 0%, 20px 20px, -20px -20px; 
+            }
         }
         
         .fighters-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
             position: relative;
             z-index: 10;
         }
         
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 400;
+            letter-spacing: clamp(3px, 1vw, 8px);
+            margin-bottom: 15px;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #ccc, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: 'GLADIADORES DEL OCTÁGONO';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.3),
+                0 0 80px rgba(255,255,255,0.1);
+            -webkit-text-fill-color: transparent;
+            background: none;
+        }
+        
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .section-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.3rem, 4vw, 2.5rem);
+            letter-spacing: clamp(2px, 1vw, 6px);
+            margin-bottom: clamp(40px, 8vh, 80px);
+            color: #ddd;
+            text-transform: uppercase;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(100px, 25vw, 200px);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: underlineGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes underlineGlow {
+            0% { 
+                box-shadow: 0 0 10px rgba(255,255,255,0.5);
+                width: clamp(80px, 20vw, 150px);
+            }
+            100% { 
+                box-shadow: 0 0 20px rgba(255,255,255,0.8);
+                width: clamp(120px, 30vw, 250px);
+            }
+        }
+        
+        /* Fighters Grid - Completamente Responsiva */
         .fighters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 350px), 1fr));
+            gap: clamp(30px, 6vw, 50px);
+            margin-bottom: clamp(40px, 8vh, 60px);
         }
         
         .fighter-card {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.25) 0%,
+                rgba(255,255,255,0.1) 50%, 
+                rgba(0,0,0,0.3) 100%);
+            border: 2px solid rgba(255,255,255,0.4);
             padding: 0;
-            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.6),
+                0 0 20px rgba(255,255,255,0.1);
             cursor: pointer;
+        }
+        
+        .fighter-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.3) 100%);
+            border: 2px solid #fff;
+            transform: translateY(-10px);
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,255,255,0.3);
         }
         
         .fighter-card::before {
@@ -249,19 +358,12 @@
             z-index: 1;
         }
         
-        .fighter-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-10px);
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        
         .fighter-card:hover::before {
             left: 100%;
         }
         
         .fighter-image {
-            height: 300px;
+            height: clamp(250px, 35vw, 320px);
             background-color: rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
@@ -269,6 +371,7 @@
             border-bottom: 2px solid rgba(255,255,255,0.1);
             position: relative;
             overflow: hidden;
+            border-radius: 18px 18px 0 0;
         }
         
         .fighter-image img {
@@ -276,129 +379,174 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            transition: transform 0.3s ease;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: brightness(0.9) contrast(1.1);
         }
         
         .fighter-card:hover .fighter-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
+            filter: brightness(1) contrast(1.2);
         }
         
         .fighter-info {
-            padding: 30px;
+            padding: clamp(20px, 4vw, 30px);
             position: relative;
             z-index: 2;
         }
         
         .fighter-name {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            letter-spacing: clamp(1px, 0.5vw, 2px);
+            margin-bottom: 8px;
             color: #fff;
             text-transform: uppercase;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.8),
+                0 0 20px rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            line-height: 1.1;
+        }
+        
+        .fighter-card:hover .fighter-name {
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,255,255,0.6);
+            transform: scale(1.02);
         }
         
         .fighter-nickname {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             font-weight: 300;
             font-style: italic;
             color: #ccc;
             margin-bottom: 15px;
             letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .fighter-card:hover .fighter-nickname {
+            color: #fff;
         }
         
         .fighter-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: clamp(8px, 2vw, 15px);
+            margin-bottom: clamp(15px, 3vw, 20px);
         }
         
         .fighter-stat {
             background: rgba(255,255,255,0.05);
-            padding: 10px;
+            padding: clamp(8px, 2vw, 12px);
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .fighter-card:hover .fighter-stat {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
         }
         
         .stat-label {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
             font-weight: 300;
             color: #999;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 2px;
         }
         
         .stat-value {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             color: #fff;
             letter-spacing: 1px;
+            line-height: 1;
         }
         
         .fighter-discipline {
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
             display: inline-block;
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #fff;
             border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-align: center;
         }
         
-        /* Sponsors Section */
+        .fighter-card:hover .fighter-discipline {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            transform: scale(1.02);
+        }
+        
+        /* Sponsors Section - Optimizada */
         .sponsors-section {
             background: #111;
-            padding: 100px 0;
+            padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
         }
 
         .sponsors-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3rem);
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: clamp(2rem, 6vw, 3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
+            margin-bottom: clamp(25px, 5vh, 40px);
             color: #fff;
+            line-height: 1.1;
         }
 
         .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 180px), 1fr));
+            gap: clamp(15px, 4vw, 30px);
             max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
+            margin: 0 auto clamp(20px, 4vh, 40px);
             align-items: center;
             justify-items: center;
         }
 
         .sponsor-item {
             background: rgba(255,255,255,0.05);
-            padding: 20px;
+            padding: clamp(15px, 3vw, 20px);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
+            border-radius: 10px;
+            width: 100%;
+            aspect-ratio: 1;
+            min-height: 80px;
         }
 
         .sponsor-item:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(255,255,255,0.3);
         }
 
         .sponsor-logo {
             max-width: 100%;
+            max-height: 100%;
             height: auto;
-            opacity: 0.7;
+            opacity: 0.8;
             transition: all 0.3s ease;
+            object-fit: contain;
         }
 
         .sponsor-item:hover .sponsor-logo {
@@ -412,22 +560,22 @@
             font-weight: 300;
             letter-spacing: 1px;
             color: #ddd;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
-        /* Back Button */
+        /* Back Button - Optimizado */
         .back-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #fff;
             color: #000;
-            width: 60px;
-            height: 60px;
+            width: clamp(50px, 10vw, 60px);
+            height: clamp(50px, 10vw, 60px);
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -443,58 +591,57 @@
             transform: scale(1.1);
         }
         
-        /* Footer */
+        /* Footer - Optimizado */
         .footer {
             background: #000;
-            padding: 40px 0;
+            padding: clamp(30px, 6vh, 40px) 15px;
             text-align: center;
             border-top: 2px solid #333;
         }
         
         .footer-text {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: #666;
             letter-spacing: 1px;
         }
         
-        /* Responsive */
+        /* Media Queries Específicas */
         @media (max-width: 768px) {
-            .header {
-                height: 60px;
+            .header-content {
+                flex-direction: column;
+                padding: 8px 15px;
             }
             
-            .header-content {
-                padding: 0 20px;
-                justify-content: space-between;
-                flex-direction: row;
+            .logo-img {
+                height: 50px;
             }
-
-            .header-logo {
-                height: 100px;
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none;
-            }
-
+            
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(0,0,0,0.95);
-                backdrop-filter: blur(10px);
+                background: rgba(0,0,0,0.98);
+                backdrop-filter: blur(15px);
                 padding: 20px 0;
                 border-bottom: 2px solid #333;
                 text-align: center;
-                gap: 15px;
+                gap: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             }
 
             .nav-menu.active {
                 display: flex;
+            }
+
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                width: 100%;
+                margin: 0;
             }
 
             .menu-toggle {
@@ -502,7 +649,8 @@
             }
             
             .fighters-hero {
-                padding-top: 100px;
+                margin-top: 80px;
+                padding-top: 40px;
             }
             
             .fighters-grid {
@@ -510,35 +658,46 @@
                 gap: 30px;
             }
             
-            .fighter-card {
-                margin: 0 10px;
-            }
-            
-            .fighter-image {
-                height: 250px;
+            .fighter-stats {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
 
             .sponsors-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
         }
         
         @media (max-width: 480px) {
-            .fighters-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .fighters-hero {
+                padding-top: 30px;
             }
             
-            .fighter-stats {
-                grid-template-columns: 1fr;
+            .fighter-card {
+                margin: 0 5px;
             }
-
-            .sponsors-section {
-                padding: 60px 0;
+            
+            .fighter-image {
+                height: 220px;
+            }
+            
+            .sponsors-grid {
+                gap: 10px;
             }
         }
         
-        /* Animations */
+        @media (min-width: 1200px) {
+            .fighters-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .fighter-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* Animaciones de entrada - Optimizadas */
         .fadeInUp {
             opacity: 0;
             transform: translateY(30px);
@@ -551,14 +710,79 @@
                 transform: translateY(0);
             }
         }
+        
+        .fighter-card {
+            animation-delay: 0.1s;
+        }
+        
+        .fighter-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .fighter-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .fighter-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        .fighter-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        
+        /* Optimizaciones de rendimiento */
+        .fighter-image img,
+        .fighter-card,
+        .sponsor-item {
+            will-change: transform;
+        }
+        
+        /* Mejoras para accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Focus states para accesibilidad */
+        .fighter-card:focus,
+        .back-button:focus,
+        .nav-menu a:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+        
+        /* Mejora para pantallas de alta densidad */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .fighter-image img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+        
+        /* Mejoras para pantallas táctiles */
+        @media (hover: none) and (pointer: coarse) {
+            .fighter-card:hover {
+                transform: none;
+            }
+            
+            .sponsor-item:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <a href="index.html">
-                    <img src="images/logo_kgb.png" alt="KGB Logo" class="header-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="images/logo_kgb.png" alt="KGB Logo" class="logo-img">
                 </a>
             </div>
             <nav class="nav-menu">
@@ -566,7 +790,7 @@
                 <a href="luchadores.html" class="active">Luchadores</a>
                 <a href="combates.html">Combates</a>
             </nav>
-            <div class="menu-toggle">
+            <div class="menu-toggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -583,13 +807,16 @@
 
     <section class="fighters-section">
         <div class="fighters-container">
+            <h2 class="section-title fadeInUp">GUERREROS DEL OCTÁGONO</h2>
+            <h3 class="section-subtitle fadeInUp">EL LINAJE DE LOS CAMPEONES</h3>
+            
             <div class="fighters-grid">
                 <div class="fighter-card fadeInUp">
                     <div class="fighter-image">
-                        <img src="images\ratza.jpeg" alt="Ratza Ciprian">
+                        <img src="images/ratza.jpeg" alt="Ratza Ciprian" loading="lazy">
                     </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Ratza Ciprian</h3>
+                        <h3 class="fighter-name">RATZA CIPRIAN</h3>
                         <p class="fighter-nickname">"La Leyenda"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
@@ -609,16 +836,16 @@
                                 <div class="stat-value">6</div>
                             </div>
                         </div>
-                        <span class="fighter-discipline">MMA • Brazilian Jiu-Jitsu </span>
+                        <span class="fighter-discipline">MMA • Brazilian Jiu-Jitsu</span>
                     </div>
                 </div>
-				
-				<div class="fighter-card fadeInUp">
+
+                <div class="fighter-card fadeInUp">
                     <div class="fighter-image">
-                        <img src="images\mihai.jpeg" alt="Mihai Dogaru">
+                        <img src="images/mihai.jpeg" alt="Mihai Dogaru" loading="lazy">
                     </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Mihai Dogaru</h3>
+                        <h3 class="fighter-name">MIHAI DOGARU</h3>
                         <p class="fighter-nickname">"El Halcón"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
@@ -644,10 +871,10 @@
 
                 <div class="fighter-card fadeInUp">
                     <div class="fighter-image">
-                        <img src="images\amiran.jpeg" alt="Amiran Liparteniani">
+                        <img src="images/amiran.jpeg" alt="Amiran Liparteniani" loading="lazy">
                     </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Amiran Liparteniani</h3>
+                        <h3 class="fighter-name">AMIRAN LIPARTENIANI</h3>
                         <p class="fighter-nickname">"-"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
@@ -673,10 +900,10 @@
 
                 <div class="fighter-card fadeInUp">
                     <div class="fighter-image">
-                        <img src="images\baranda.jpeg" alt="Adrián Baranda">
+                        <img src="images/baranda.jpeg" alt="Adrián Baranda" loading="lazy">
                     </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Adrián Baranda</h3>
+                        <h3 class="fighter-name">ADRIÁN BARANDA</h3>
                         <p class="fighter-nickname">"Notorius"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
@@ -702,10 +929,10 @@
 
                 <div class="fighter-card fadeInUp">
                     <div class="fighter-image">
-                        <img src="images\diego_vaquero.jpeg" alt="Javier Santos">
+                        <img src="images/diego_vaquero.jpeg" alt="Diego Vaquero" loading="lazy">
                     </div>
                     <div class="fighter-info">
-                        <h3 class="fighter-name">Diego Vaquero</h3>
+                        <h3 class="fighter-name">DIEGO VAQUERO</h3>
                         <p class="fighter-nickname">"-"</p>
                         <div class="fighter-stats">
                             <div class="fighter-stat">
@@ -736,114 +963,260 @@
         <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
         <div class="sponsors-grid">
             <div class="sponsor-item">
-                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo">
+                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo">
+                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo">
+                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo">
+                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo">
+                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo" loading="lazy">
             </div>
             <div class="sponsor-item">
-                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo">
+                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo" loading="lazy">
             </div>
-			<div class="sponsor-item">
-                <img src="images\logo_aemma.png" alt="Aenma" class="sponsor-logo">
+            <div class="sponsor-item">
+                <img src="images/logo_aemma.png" alt="AEMMA" class="sponsor-logo" loading="lazy">
             </div>
-			<div class="sponsor-item">
-                <img src="images\autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo">
+            <div class="sponsor-item">
+                <img src="images/autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo" loading="lazy">
             </div>
-			<div class="sponsor-item">
-                <img src="images\logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo">
+            <div class="sponsor-item">
+                <img src="images/logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo" loading="lazy">
             </div>
         </div>
         <p class="sponsors-text">Gracias por hacer posible este evento</p>
     </section>
 
-    <button class="back-button" onclick="window.location.href='index.html'">🏠</button>
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Volver al inicio">🏠</button>
 
     <footer class="footer">
         <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
+        // Optimización del header con scroll
+        let ticking = false;
+        
+        function updateHeader() {
             const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
                 header.style.background = 'rgba(0,0,0,0.98)';
+                header.style.backdropFilter = 'blur(15px)';
             } else {
                 header.style.background = 'rgba(0,0,0,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             }
-        });
+            
+            ticking = false;
+        }
+        
+        function requestHeaderUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
 
-        // Toggle mobile menu
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        // Toggle mobile menu optimizado
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', function() {
             this.classList.toggle('active');
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
+            navMenu.classList.toggle('active');
+        }, { passive: true });
 
-        // Intersection Observer for animations
+        // Cerrar menú al hacer click en un enlace
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        }, { passive: true });
+
+        // Intersection Observer optimizado
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: [0, 0.1, 0.5],
+            rootMargin: '0px 0px -10% 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    
+                    // Desconectar el observer una vez que el elemento está visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe elements for animations
+        // Inicialización optimizada
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate fighter cards
-            const cards = document.querySelectorAll('.fighter-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
-                observer.observe(card);
+            // Animación de elementos con mejor performance
+            const animatedElements = document.querySelectorAll('.fadeInUp');
+            
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+                
+                observer.observe(element);
             });
 
-            // Animate sections
-            const sections = document.querySelectorAll('.sponsors-section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(section);
+            // Hover effects optimizados para móvil
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            
+            if (!isMobile) {
+                // Efectos hover solo en desktop
+                const fighterCards = document.querySelectorAll('.fighter-card');
+                fighterCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-15px) scale(1.02)';
+                    }, { passive: true });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(-10px) scale(1)';
+                    }, { passive: true });
+                });
+            }
+
+            // Efectos de click para móviles
+            const fighterCards = document.querySelectorAll('.fighter-card');
+            fighterCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = isMobile ? 'translateY(0)' : 'translateY(-10px)';
+                    }, 300);
+                }, { passive: true });
+                
+                // Hacer las tarjetas accesibles por teclado
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Lazy loading para imágenes que no tienen loading="lazy"
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img:not([loading])');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                });
+            } else {
+                // Fallback para navegadores que no soportan loading="lazy"
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('img').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Preload de imágenes críticas
+            const criticalImages = [
+                'images/logo_kgb.png',
+                'images/ratza.jpeg',
+                'images/mihai.jpeg'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
             });
         });
 
-        // Fighter card click effects
-        document.querySelectorAll('.fighter-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-10px)';
-                }, 200);
-            });
-        });
+        // Manejo de errores de imágenes
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.style.opacity = '0.5';
+                e.target.alt = 'Imagen no disponible';
+                console.warn('Error loading image:', e.target.src);
+            }
+        }, true);
 
-        // Smooth scrolling for navigation
+        // Optimización de resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Recalcular elementos si es necesario
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                
+                // Cerrar menú móvil si se redimensiona a desktop
+                if (!isMobile) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+                
+                document.body.style.height = 'auto';
+            }, 250);
+        }, { passive: true });
+
+        // Service Worker para cache (opcional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function() {
+                    // Service worker no disponible
+                });
+            });
+        }
+
+        // Smooth scrolling para navegación
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
+
+        // Accesibilidad mejorada
+        document.addEventListener('keydown', function(e) {
+            // Escape para cerrar menú móvil
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuToggle.focus();
+            }
+        });
+
+        // Performance monitoring (opcional)
+        if ('performance' in window && 'measure' in performance) {
+            window.addEventListener('load', function() {
+                performance.mark('fighters-page-loaded');
+                setTimeout(() => {
+                    performance.measure('fighters-page-load-time', 'navigationStart', 'fighters-page-loaded');
+                }, 0);
+            });
+        }
     </script>
 </body>
 </html>
