@@ -33,7 +33,7 @@
             z-index: 1000;
             background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
-            padding: 8px 0;
+            padding: 5px 0;
             border-bottom: 2px solid #333;
             transition: all 0.3s ease;
             height: auto;
@@ -47,25 +47,26 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 15px;
-            position: relative;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .logo-section {
+            text-align: center;
             flex-shrink: 0;
-            z-index: 1001;
         }
-
-        .header-logo {
-            height: clamp(45px, 8vw, 70px);
+        
+        .logo-img {
+            height: clamp(50px, 8vw, 80px);
             width: auto;
-            max-width: 180px;
-            transition: all 0.3s ease;
+            max-width: 200px;
         }
         
         .nav-menu {
             display: flex;
-            gap: clamp(20px, 4vw, 30px);
-            align-items: center;
+            gap: clamp(15px, 4vw, 30px);
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .nav-menu a {
@@ -77,7 +78,8 @@
             transition: all 0.3s ease;
             padding: 8px 12px;
             border: 1px solid transparent;
-            border-radius: 4px;
+            border-radius: 5px;
+            text-align: center;
             white-space: nowrap;
         }
         
@@ -85,39 +87,6 @@
         .nav-menu a.active {
             border: 1px solid #fff;
             background: rgba(255,255,255,0.1);
-        }
-
-        /* Mobile menu - Mejorado */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 28px;
-            height: 22px;
-            cursor: pointer;
-            z-index: 1002;
-            padding: 2px;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #fff;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-origin: center;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(4px, 4px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
         }
         
         /* Hero Section - Optimizado */
@@ -131,6 +100,7 @@
             position: relative;
             overflow: hidden;
             padding: clamp(80px, 15vh, 150px) 15px clamp(30px, 8vh, 50px);
+            margin-top: 60px;
         }
         
         /* Cage Effect Background - Responsive */
@@ -303,19 +273,74 @@
         
         /* Countdown Section - Optimizado */
         .countdown-section {
-            background: #111;
-            padding: clamp(60px, 12vh, 100px) 15px;
+            background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+            padding: clamp(60px, 12vh, 120px) 15px;
             text-align: center;
             border-top: 3px solid #333;
             border-bottom: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%);
+            background-size: 200% 200%, 200% 200%, 40px 40px, 40px 40px;
+            animation: dynamicBg 15s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes dynamicBg {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 100%, 0 0, 0 0; 
+            }
+            50% { 
+                background-position: 100% 100%, 0% 0%, 20px 20px, -20px -20px; 
+            }
         }
         
         .countdown-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            letter-spacing: clamp(2px, 1vw, 4px);
-            margin-bottom: clamp(30px, 6vh, 40px);
-            color: #fff;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 400;
+            letter-spacing: clamp(3px, 1vw, 8px);
+            margin-bottom: clamp(40px, 8vh, 80px);
+            background: linear-gradient(45deg, #fff, #ccc, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .countdown-title::after {
+            content: 'CUENTA REGRESIVA';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.3),
+                0 0 80px rgba(255,255,255,0.1);
+            -webkit-text-fill-color: transparent;
+            background: none;
+        }
+        
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .countdown {
@@ -324,16 +349,25 @@
             gap: clamp(20px, 4vw, 40px);
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
         
         .countdown-item {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.25) 0%,
+                rgba(255,255,255,0.1) 50%, 
+                rgba(0,0,0,0.3) 100%);
+            border: 2px solid rgba(255,255,255,0.4);
             padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 20px);
-            transition: all 0.3s ease;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.6),
+                0 0 20px rgba(255,255,255,0.1);
         }
         
         .countdown-item::before {
@@ -343,14 +377,17 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
         
         .countdown-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.3);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.3) 100%);
+            transform: translateY(-5px);
+            border-color: #fff;
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,255,255,0.3);
         }
         
         .countdown-item:hover::before {
@@ -363,6 +400,9 @@
             color: #fff;
             display: block;
             line-height: 1;
+            text-shadow: 
+                0 0 20px rgba(255,255,255,0.3),
+                2px 2px 4px rgba(0,0,0,0.8);
         }
         
         .countdown-label {
@@ -377,9 +417,10 @@
         
         /* About Section - Optimizado */
         .about-section {
-            background: #000;
+            background: radial-gradient(ellipse at center, #111 0%, #000 100%);
             padding: clamp(80px, 15vh, 120px) 15px;
             position: relative;
+            overflow: hidden;
         }
         
         .about-section::before {
@@ -389,8 +430,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%);
+            background-size: 200% 200%, 200% 200%, 40px 40px, 40px 40px;
+            animation: dynamicBg 15s ease-in-out infinite;
+            opacity: 0.6;
         }
         
         .about-content {
@@ -402,12 +449,33 @@
         }
         
         .about-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            letter-spacing: clamp(2px, 1vw, 4px);
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 400;
+            letter-spacing: clamp(3px, 1vw, 8px);
             margin-bottom: clamp(25px, 5vh, 40px);
-            color: #fff;
+            background: linear-gradient(45deg, #fff, #ccc, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            position: relative;
             line-height: 1.1;
+        }
+        
+        .about-title::after {
+            content: 'EL NACIMIENTO DE UNA LEYENDA';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.3),
+                0 0 80px rgba(255,255,255,0.1);
+            -webkit-text-fill-color: transparent;
+            background: none;
         }
         
         .about-text {
@@ -421,19 +489,60 @@
         
         /* Social Section - Optimizado */
         .social-section {
-            background: #111;
+            background: radial-gradient(ellipse at center, #111 0%, #000 100%);
             padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%);
+            background-size: 200% 200%, 200% 200%, 40px 40px, 40px 40px;
+            animation: dynamicBg 15s ease-in-out infinite;
+            opacity: 0.6;
         }
         
         .social-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            letter-spacing: clamp(2px, 1vw, 4px);
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 400;
+            letter-spacing: clamp(2px, 1vw, 6px);
             margin-bottom: clamp(25px, 5vh, 40px);
-            color: #fff;
+            background: linear-gradient(45deg, #fff, #ccc, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
             line-height: 1.1;
+        }
+        
+        .social-title::after {
+            content: 'ÚNETE A LA COMUNIDAD DE COMBATIENTES';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.3),
+                0 0 80px rgba(255,255,255,0.1);
+            -webkit-text-fill-color: transparent;
+            background: none;
         }
         
         .social-icons {
@@ -442,23 +551,32 @@
             gap: clamp(20px, 6vw, 40px);
             margin: clamp(25px, 5vh, 40px) 0;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
         }
         
         .social-icon {
-            width: clamp(60px, 12vw, 80px);
-            height: clamp(60px, 12vw, 80px);
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.3);
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.25) 0%,
+                rgba(255,255,255,0.1) 50%, 
+                rgba(0,0,0,0.3) 100%);
+            border: 2px solid rgba(255,255,255,0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: #fff;
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.6),
+                0 0 20px rgba(255,255,255,0.1);
         }
         
         .social-icon::before {
@@ -474,10 +592,13 @@
         }
         
         .social-icon:hover {
-            background: #fff;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%);
             color: #000;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            transform: translateY(-5px) scale(1.05);
+            border-color: #fff;
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,255,255,0.5);
         }
         
         .social-icon:hover::before {
@@ -486,6 +607,8 @@
         
         .social-info {
             margin-top: clamp(20px, 4vh, 30px);
+            position: relative;
+            z-index: 10;
         }
         
         .social-link {
@@ -496,29 +619,77 @@
             font-size: clamp(1rem, 2.5vw, 1.1rem);
             margin: 8px 0;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
-            padding: 5px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            border-radius: 25px;
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
         }
         
         .social-link:hover {
             color: #fff;
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.02);
         }
 
         /* Sponsors Section - Optimizado */
         .sponsors-section {
-            background: #111;
+            background: radial-gradient(ellipse at center, #111 0%, #000 100%);
             padding: clamp(60px, 12vh, 100px) 15px;
             text-align: center;
             border-top: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sponsors-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%);
+            background-size: 200% 200%, 200% 200%, 40px 40px, 40px 40px;
+            animation: dynamicBg 15s ease-in-out infinite;
+            opacity: 0.6;
         }
 
         .sponsors-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            letter-spacing: clamp(2px, 1vw, 4px);
-            margin-bottom: clamp(25px, 5vh, 40px);
-            color: #fff;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 400;
+            letter-spacing: clamp(2px, 1vw, 6px);
+            margin-bottom: clamp(40px, 8vh, 80px);
+            background: linear-gradient(45deg, #fff, #ccc, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
             line-height: 1.1;
+        }
+        
+        .sponsors-title::after {
+            content: 'NUESTROS PATROCINADORES';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            text-shadow: 
+                0 0 40px rgba(255,255,255,0.3),
+                0 0 80px rgba(255,255,255,0.1);
+            -webkit-text-fill-color: transparent;
+            background: none;
         }
 
         .sponsors-grid {
@@ -526,43 +697,54 @@
             grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 180px), 1fr));
             gap: clamp(15px, 4vw, 30px);
             max-width: 1200px;
-            margin: 0 auto clamp(20px, 4vh, 40px);
+            margin: 0 auto clamp(30px, 6vh, 50px);
             align-items: center;
             justify-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .sponsor-item {
-            background: rgba(255,255,255,0.05);
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.25) 0%,
+                rgba(255,255,255,0.1) 50%, 
+                rgba(0,0,0,0.3) 100%);
+            border: 2px solid rgba(255,255,255,0.4);
             padding: clamp(15px, 3vw, 20px);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-            border-radius: 8px;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
             width: 100%;
             aspect-ratio: 1;
-            min-height: 80px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.6),
+                0 0 20px rgba(255,255,255,0.1);
         }
 
         .sponsor-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.3);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.3) 100%);
+            transform: translateY(-5px);
+            border-color: #fff;
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,255,255,0.3);
         }
 
         .sponsor-logo {
             max-width: 100%;
             max-height: 100%;
             height: auto;
-            opacity: 0.7;
+            opacity: 0.8;
             transition: all 0.3s ease;
             object-fit: contain;
         }
 
         .sponsor-item:hover .sponsor-logo {
             opacity: 1;
-            filter: grayscale(0) brightness(100%);
+            filter: brightness(1.1) contrast(1.05);
         }
 
         .sponsors-text {
@@ -572,6 +754,8 @@
             letter-spacing: 1px;
             color: #ddd;
             margin-top: 15px;
+            position: relative;
+            z-index: 10;
         }
         
         /* Footer - Optimizado */
@@ -592,39 +776,16 @@
         /* Media Queries Específicas */
         @media (max-width: 768px) {
             .header-content {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .nav-menu {
-                display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(0,0,0,0.98);
-                backdrop-filter: blur(15px);
-                padding: 20px 0;
-                border-bottom: 2px solid #333;
-                text-align: center;
-                gap: 5px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+                padding: 8px 15px;
             }
-
-            .nav-menu.active {
-                display: flex;
+            
+            .logo-img {
+                height: 50px;
             }
-
-            .nav-menu a {
-                font-size: 1.1rem;
-                padding: 15px 20px;
-                width: 100%;
-                margin: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
+            
+            .nav-menu {
+                gap: 15px;
             }
             
             .hero {
@@ -658,6 +819,7 @@
         @media (max-width: 480px) {
             .hero {
                 padding-top: 90px;
+                margin-top: 80px;
             }
             
             .countdown {
@@ -681,6 +843,12 @@
             
             .social-icons {
                 gap: 15px;
+            }
+            
+            .social-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
         }
         
@@ -760,14 +928,23 @@
                 transform: none;
             }
         }
+        
+        /* Mejora para pantallas de alta densidad */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo-img,
+            .sponsor-logo {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <a href="index.html" aria-label="KGB - Kombat Games Burgos">
-                    <img src="images/logo_kgb.png" alt="KGB Logo" class="header-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="images/logo_kgb.png" alt="KGB Logo" class="logo-img">
                 </a>
             </div>
             <nav class="nav-menu">
@@ -775,11 +952,6 @@
                 <a href="luchadores.html">Luchadores</a>
                 <a href="combates.html">Combates</a>
             </nav>
-            <div class="menu-toggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </header>
 
@@ -834,4 +1006,223 @@
             <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-icon" rel="noopener" aria-label="Instagram">
                 📷
             </a>
-            <a href="mailto:kombatgame
+            <a href="mailto:kombatgamesburgos@gmail.com" class="social-icon" aria-label="Email">
+                ✉️
+            </a>
+        </div>
+        <div class="social-info">
+            <a href="https://www.instagram.com/kombatgamesburgos2025" target="_blank" class="social-link" rel="noopener">
+                @kombatgamesburgos2025
+            </a>
+            <a href="mailto:kombatgamesburgos@gmail.com" class="social-link">
+                kombatgamesburgos@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <section class="sponsors-section">
+        <h2 class="sponsors-title">NUESTROS PATROCINADORES</h2>
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <img src="images/logo_diorse-removebg-preview.jpg" alt="Diorse" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_estrumar-removebg-preview.png" alt="Estrumar" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_farandula-removebg-preview.jpg" alt="Farándula" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_leñas-removebg-preview.png" alt="Leñas" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_medina-removebg-preview.png" alt="Medina" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logoo_aguanile-removebg-preview.png" alt="Aguanile" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_aemma.png" alt="AEMMA" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/autoescuela_2000.jpg" alt="Grupodosmil" class="sponsor-logo" loading="lazy">
+            </div>
+            <div class="sponsor-item">
+                <img src="images/logo_vecinu.jpeg" alt="Vecinu" class="sponsor-logo" loading="lazy">
+            </div>
+        </div>
+        <p class="sponsors-text">Gracias por hacer posible este evento</p>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">© 2025 Kombat Games Burgos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Optimización del header con scroll
+        let ticking = false;
+        
+        function updateHeader() {
+            const header = document.querySelector('.header');
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
+                header.style.background = 'rgba(0,0,0,0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(0,0,0,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+            
+            ticking = false;
+        }
+        
+        function requestHeaderUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
+
+        // Countdown functionality
+        function updateCountdown() {
+            const eventDate = new Date('September 20, 2025 17:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Intersection Observer optimizado
+        const observerOptions = {
+            threshold: [0, 0.1, 0.5],
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Desconectar el observer una vez que el elemento está visible
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Inicialización optimizada
+        document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Animación de elementos con mejor performance
+            const animatedElements = document.querySelectorAll('.fadeInUp');
+            
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+                
+                observer.observe(element);
+            });
+
+            // Hover effects optimizados para móvil
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            
+            if (!isMobile) {
+                // Efectos hover solo en desktop
+                const sponsorItems = document.querySelectorAll('.sponsor-item');
+                sponsorItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px) scale(1.02)';
+                    }, { passive: true });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    }, { passive: true });
+                });
+            }
+
+            // Lazy loading para imágenes que no tienen loading="lazy"
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img:not([loading])');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                });
+            } else {
+                // Fallback para navegadores que no soportan loading="lazy"
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('img').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Preload de imágenes críticas
+            const criticalImages = [
+                'images/logo_kgb.png'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+
+        // Manejo de errores de imágenes
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.style.opacity = '0.5';
+                e.target.alt = 'Imagen no disponible';
+                console.warn('Error loading image:', e.target.src);
+            }
+        }, true);
+
+        // Optimización de resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Recalcular elementos si es necesario
+                document.body.style.height = 'auto';
+            }, 250);
+        }, { passive: true });
+
+        // Service Worker para cache (opcional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function() {
+                    // Service worker no disponible
+                });
+            });
+        }
+    </script>
+</body>
+</html>
